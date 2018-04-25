@@ -1,0 +1,66 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="parent">
+    <view class="header">
+        <view class="poster">
+            <image src="/img/poster.png" mode='widthFix'></image>
+        </view>
+        <!-- <view class="advice">
+             <text>X爸X妈可能面临的育儿问题</text>
+        </view> -->
+    </view>
+    <view class="main">
+        <view class="tip_msg" wx:if="{{report_inf.nickname}}">
+            <text class="title">{{report_inf.nickname}}的喂养睡眠方案:</text>
+            <text class="sub_title">每日喂养，睡眠状况</text>
+        </view>
+        <view wx:if="{{current_index==1}}">
+            <view wx:if="{{report_inf.height}}">{{report_inf.height}}</view>
+            <view wx:if="{{report_inf.height}}">{{report_inf.weight}}</view>
+        </view>
+        <!-- <view wx:if="{{report_inf.height}}">
+             {{report_inf.height}} 
+            <template is="wxParse" data="{{wxParseData:get_growth_devlopment_report_inf.nodes}}" />
+        </view>
+        <view wx:if="{{report_inf.weight}}">{{report_inf.weight}}</view>
+        <view wx:if="{{report_inf.content}}">{{report_inf.content}}</view>
+        <view >
+             {{report_inf.shuimian}}
+        </view>
+        <view wx:if="{{report_inf.zhuyi}}">{{report_inf.zhuyi}}</view>
+        <view wx:if="{{report_inf.tiaozheng}}">
+            WxParse.wxParseTemArray("get_sleep_report_inf_inf", 'html', res.data.data.tiaozheng.content, that, 5); 
+        </view>
+        <view wx:if="{{report_inf.meiri}}">{{report_inf.meiri}}</view>
+        <view wx:if="{{report_inf.wanju}}">{{report_inf.wanju}}</view>
+        <view wx:if="{{report_inf.jiating}}">{{report_inf.jiating}}</view>
+        <view wx:if="{{report_inf.qinzi}}">{{report_inf.qinzi}}</view>
+        <view wx:if="{{report_inf.baba}}">{{report_inf.baba}}</view>
+        <view wx:if="{{report_inf.jianyi}}">{{report_inf.jianyi}}</view> -->
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_tiaozheng_inf.nodes}}" />
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_zhuyi_inf.nodes}}" />
+
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_baba_inf.nodes}}" />
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_jianyi_inf.nodes}}" />
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_jiating_inf.nodes}}" />
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_meiri_inf.nodes}}" />
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_qinzi_inf.nodes}}" />
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_wanju_inf.nodes}}" />
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_content_inf.nodes}}" />
+
+
+
+        <template is="wxParse" data="{{wxParseData:get_sleep_report_tiaozheng_inf.nodes}}" />
+    </view>
+    <view class="footer">
+        <image src="/img/footer_img.jpg" mode='widthFix'></image>
+    </view>
+</view>

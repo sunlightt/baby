@@ -1,0 +1,27 @@
+{
+    "pages": [
+
+        "pages/index/index",
+        "pages/loading/index",
+        "pages/wether/index",
+        "pages/detail/record_detail/index",
+        "pages/detail/feed/index",
+        "pages/detail/record/index",
+        "pages/detail/temperature/index",
+        "pages/detail/db/index",
+        "pages/detail/exercise/index",
+        "pages/detail/height/index",
+        "pages/detail/sleep/index",
+        "pages/report_detail/index",
+        "pages/fill_inf/index", 
+        "pages/supplementray_inf/index",
+        "pages/draw_img/index"
+        
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#FF6E00",
+        "navigationBarTitleText": "宝贝吖养育助手",
+        "navigationBarTextStyle": "white"
+    }
+}

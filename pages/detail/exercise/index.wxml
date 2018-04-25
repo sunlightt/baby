@@ -1,0 +1,50 @@
+<view class='feed'>
+    <image src='/img/hd.png' mode='aspectFit'></image>
+</view>
+<form bindsubmit='submit'>
+    <view class='main'>
+        <view class='text'>
+            <view>记录日期</view>
+            <view>
+                <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+                    {{dateValue}}
+                </picker>
+            </view>
+        </view>
+        <view class='text'>
+            <view>记录时间</view>
+            <view>
+                <picker mode="time" value="{{timeValue}}" start="00:00" end="24:00" bindchange="timePickerBindchange">
+                    {{timeValue}}
+                </picker>
+            </view>
+        </view>
+        <view class='text'>
+            <view>活动内容</view>
+            <view>
+                <picker value="{{pickerValue}}" range="{{pickerRange}}" bindchange="normalPickerBindchange">
+                    {{pickerRange[pickerValue]}}
+                </picker>
+            </view>
+        </view>
+        <view class='text'>
+            <view>活动时长</view>
+            <picker bindchange="time_long" value="{{time_long_index}}" range="{{time_long}}">
+                <view class="picker">
+                    {{time_long[time_long_index]}}分钟
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class='footer'>
+        <view bindtap='reset'>重置</view>
+        <button form-type='submit' class="sub_btn">提交</button>
+    </view>
+</form>
+
+
+<!--提示弹框  -->
+<view class="toust_mark" wx:if="{{showToast}}">
+    <image src="/img/tip.png"></image>
+    <text>{{show_tip_msg}}</text>
+</view>

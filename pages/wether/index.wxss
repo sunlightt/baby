@@ -1,0 +1,184 @@
+page {
+    background: #f4f4f4;
+}
+
+.parent {
+    padding: 0 44rpx;
+}
+
+.parent .stars {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.parent .stars text {
+    display: block;
+    font: 28rpx/90rpx '微软雅黑';
+    color: #515151;
+}
+
+.parent .stars .star_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 90rpx;
+    margin-left: 20rpx;
+}
+
+.parent .stars .star_list image {
+    display: inline-block;
+    width: 38rpx;
+    height: 38rpx;
+    margin-left: 10rpx;
+}
+
+.wether_inf {
+    padding: 0 74rpx;
+}
+
+.wether_inf .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 70rpx 0 32rpx;
+}
+
+.wether_inf .header .left {
+    position: relative;
+    padding-top: 14rpx;
+    padding-right: 80rpx;
+    border-right: 10rpx solid #ff6e00;
+}
+
+.wether_inf .header .left::before {
+    content: '';
+    display: block;
+    width: 16rpx;
+    height: 16rpx;
+    border: 8rpx solid #ff6e00;
+    border-radius: 12rpx;
+    position: absolute;
+    right: 26rpx;
+    top: 0;
+}
+
+.wether_inf .header .left .wether_status {
+    display: inline-block;
+    font: 32rpx '微软雅黑';
+    color: #ff6e00;
+    position: absolute;
+    right: 26rpx;
+    top: 64rpx;
+}
+
+.wether_inf .header .left text {
+    display: block;
+    font: 84rpx '微软雅黑';
+    color: #ff6e00;
+}
+
+.wether_inf .header .right {
+    padding-left: 32rpx;
+}
+
+.wether_inf .header .right text {
+    display: block;
+    font: 22rpx/40rpx '微软雅黑';
+    color: #ff6e00;
+}
+
+.wether_inf .header .right .area {
+    position: relative;
+    padding-left: 34rpx;
+    display: block;
+    font: 22rpx/40rpx '微软雅黑';
+    color: #ff6e00;
+}
+
+.wether_inf .header .right .area image {
+    display: block;
+    width: 20rpx;
+    height: 26rpx;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -13rpx;
+}
+
+.wether_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.wether_list .item {
+    flex: 1;
+    margin-left: 12rpx;
+    padding: 12rpx 0;
+    background: #ff6e00;
+}
+
+.wether_list .item:first-child {
+    margin-left: 0;
+}
+
+.wether_list .item text {
+    display: block;
+    font: 20rpx/30rpx '微软雅黑';
+    color: #fff;
+    text-align: center;
+}
+.wether_img {
+    padding:54rpx 0 38rpx 0;
+}
+.wether_img image {
+    display: block;
+    width: 242rpx;
+    height: 378rpx;
+    margin: 0 auto;
+}
+
+.weather .title image{
+    width: 30rpx;
+    height: 30rpx;
+    display: inline-block;
+}
+.weather .title view{
+    color: #FFFFFF;
+    width:235rpx;
+    height:55rpx;
+    border-radius: 30rpx;
+    background-color: #FF6E00;
+    padding:0 3rpx; 
+    line-height: 55rpx;
+    font-size: 36rpx;
+}
+.weather view{
+    text-align: center;
+}
+
+.weather .guide{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    padding:30rpx 0;
+}
+.weather .guide .item{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:0 30rpx;
+}
+.weather .guide .item .img image{
+    display:block;
+    width:60rpx;
+}
+.weather .guide .item  .inf_name{
+    display:block;
+    font:24rpx/58rpx '微软雅黑';
+    color:#000;
+    text-align:center;
+
+}

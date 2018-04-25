@@ -1,0 +1,84 @@
+<view class="parent">
+    <view class="date_wrap">
+        <view class="date_inf">
+            <view class="pre_btn" bindtap='next_week'></view>
+            <text>{{current_date}}</text>
+            <view class="next_btn" bindtap='addWeek'></view>
+        </view>
+        <view class="date_list">
+            <view class="item" wx:for="{{date_list}}" data-time_str="{{item.time_str}}" bindtap="filter_date">
+                <text class="date">{{item.date}}</text>
+                <text class="week">周{{item.week}}</text>
+            </view>
+            <!-- <view class="item">
+                <text class="date">18</text>
+                <text class="week">周一</text>
+            </view>
+            <view class="item">
+                <text class="date">18</text>
+                <text class="week">周一</text>
+            </view>
+            <view class="item">
+                <text class="date">18</text>
+                <text class="week">周一</text>
+            </view>
+            <view class="item">
+                <text class="date">18</text>
+                <text class="week">周一</text>
+            </view>
+            <view class="item">
+                <text class="date">18</text>
+                <text class="week">周一</text>
+            </view>
+            <view class="item">
+                <text class="date">18</text>
+                <text class="week">周一</text>
+            </view> -->
+        </view>
+    </view>
+    <view class="main">
+        <view class="section">
+            <view class="section_title">
+                <text>今日统计</text>
+            </view>
+            <view class="show_msg">
+                <text>喂母乳{{record_data.total_mu}}次，共计{{record_data.total1}}分钟</text>
+                <text>喂配方奶{{record_data.total_pei}}次，共计{{record_data.total2}}毫升</text>
+                <text>睡眠{{record_data.total_shui}}次，共计{{record_data.total3/3600}}小时</text>
+                <text>大便{{record_data.total_bian}}次，{{record_data.is_zhengchang==1 ? '性状正常' : '非正常'}}</text>
+                <text>体温记录{{record_data.total_ti}}，为{{record_data.sq5[0].temper}}℃</text>
+                <text>活动记录{{record_data.total_act}}次，共计{{record_data.total4}}分钟</text>
+                <text>身高体重最近称量{{record_data.sq7[0].weight}}cm,{{record_data.sq7[0].height}}kg</text>  
+            </view>
+        </view>
+        <view class="section">
+            <view class="section_title">
+                <text>记录历史</text>
+            </view>
+            <view class="record_list">
+                <view class="item" wx:for="{{record_data.res}}">
+                    <image src="/img/icon5.png" class="icon" wx:if="{{item.type==1}}"></image>
+                    <image src="/img/icon3.png" class="icon" wx:if="{{item.type==2}}"></image>
+                    <image src="/img/icon1.png" class="icon" wx:if="{{item.type==3}}"></image>
+                    <image src="/img/icon4.png" class="icon" wx:if="{{item.type==4}}"></image>
+                    <image src="/img/icon.png" class="icon" wx:if="{{item.type==5}}"></image>
+                    <image src="/img/icon2.png" class="icon" wx:if="{{item.type==6}}"></image>
+                    <view class="record_detail">
+                        <text class="date">{{item.stime}}</text>
+                        <text class="time" wx:if="{{item.type==1}}">{{item.feed_long==0 ? '配方奶' : '母乳'}}， {{item.feed_long==0 ? '配方奶'+item.feed_l+'ml' : '时长'+item.feed_long+'分钟'}}</text>
+                        <text class="time" wx:if="{{item.type==2}}">睡眠 {{item.stime}}~{{item.etime}}</text>
+                        <text class="time" wx:if="{{item.type==3}}">大便 {{item.character==1 ? '性状正常' : '非正常'}}</text>
+                        <text class="time" wx:if="{{item.type==4}}">体温 {{item.temper}}℃</text>
+                        <text class="time" wx:if="{{item.type==5}}">活动 {{item.longtime}}分钟</text>
+                        <text class="time" wx:if="{{item.type==6}}">身高/体重 {{item.height}}cm , {{item.weight}}kg</text> 
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="sub_btn" style="padding-bottom:30rpx">
+             <button bindtap='submit_report'>提交记录 获取方案</button>
+        </view>
+    </view>
+
+
+</view>

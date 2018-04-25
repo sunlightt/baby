@@ -1,0 +1,48 @@
+/*弹框提示  */
+
+.toust_mark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200rpx;
+    padding: 30rpx 4rpx;
+    background: rgba(63, 63, 63, 0.9);
+    /* background:#3f3f3f; */
+    box-sizing: border-box;
+    transform: translate(-50%, -50%);
+    border-radius: 30rpx;
+    z-index: 9999;
+}
+
+.toust_mark image {
+    display: block;
+    width: 45rpx;
+    height: 45rpx;
+    margin: 0 auto 20rpx;
+}
+
+.toust_mark text {
+    display: block;
+    font: 22rpx/36rpx '微软雅黑';
+    color: #fff;
+    text-align: center;
+}
+
+.footer .sub_btn {
+    color: #fff;
+    display: block;
+    width: 100rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    padding: 10rpx 60rpx;
+    font-size: 30rpx;
+    margin: 300rpx 30rpx 50rpx 0;
+    background-color: #fa0;
+    border-radius: 30rpx;
+    text-align: center;
+    box-sizing: content-box;
+}
+
+button{
+    border:none;
+}

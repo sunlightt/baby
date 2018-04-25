@@ -1,0 +1,47 @@
+page{
+    height:100%;
+}
+.parent{
+    height:100%;
+    padding:24rpx 54rpx 0;
+}
+.parent .header{
+    padding-bottom:30rpx;
+}
+.parent .header .poster image{
+    display:block;
+    width:100%;
+}
+.parent .header .advice text{
+    display:block;
+    font:28rpx/80rpx '微软雅黑';
+    color:#ff6d00;
+}
+
+.parent .main{
+
+    min-height:34%;
+    
+}
+
+.parent .footer image{
+    display:block;
+    width:100%;
+}
+
+
+.main view{
+    display:inline-block;
+}
+
+.tip_msg .title{
+    display:block;
+    font:52rpx/70rpx '微软雅黑';
+    color:#f77567;
+
+}
+.tip_msg .sub_title{
+    display:block;
+    font:32rpx/60rpx '微软雅黑';
+    color:#f77567;
+}

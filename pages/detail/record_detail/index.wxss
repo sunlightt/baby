@@ -1,0 +1,140 @@
+
+.parent{
+    padding:0 58rpx;
+}
+.parent .date_wrap{
+     padding:0 14rpx;
+}
+.parent .date_wrap .date_inf{
+    display:flex;
+    flex-direction:row;
+    font:28rpx/108rpx '微软雅黑';
+    color:#ffaa00;
+    text-align:center;
+    padding-top:35rpx;
+}
+.parent .date_wrap .date_inf  text{
+    flex:3;
+}
+.parent .date_wrap .date_inf .pre_btn , .parent .date_wrap .date_inf .next_btn{
+    flex:1;
+    width:90rpx;
+    height:108rpx;
+    position:relative;
+}
+.parent .date_wrap .date_inf .pre_btn::before , .parent .date_wrap .date_inf .next_btn::before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    border-top:30rpx solid transparent;
+    border-bottom:30rpx solid transparent;
+    border-right:30rpx solid #ffaa00;
+    position:absolute;
+    top:50%;
+    margin-top:-30rpx;
+}
+.parent .date_wrap .date_inf .pre_btn::before{
+    left:0;
+}
+.parent .date_wrap .date_inf .next_btn::before{
+    border-right:none;
+    border-left:30rpx solid #ffaa00;
+    right:0;
+}
+
+.date_wrap .date_list{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+.date_wrap .date_list .item{
+    flex:1;
+    background:#ffaa00;
+    padding:15rpx 0;
+    margin-left:12rpx;
+}
+.date_wrap .date_list .item:first-child{
+    margin-left:0;
+}
+.date_wrap .date_list .item .date{
+    display:block;
+    width:100%;
+    font:20rpx/30rpx '微软雅黑';
+    color:#fff;
+    text-align:center;
+
+}
+.date_wrap .date_list .item .week{
+    display:block;
+    width:100%;
+    font:22rpx/30rpx '微软雅黑';
+    color:#fff;
+    text-align:center;
+}
+
+.section{
+    padding:46rpx 0 0;
+}
+.section .section_title{
+    margin-bottom:24rpx;
+}
+.section .section_title text{
+    display:inline-block;
+    font:30rpx/60rpx '微软雅黑';
+    color:#fff;
+    background:#ff6e00;
+    padding:0 52rpx;
+    border-radius:30rpx;
+}
+.section .show_msg{
+    padding-left:14rpx;
+}
+.section .show_msg text{
+    display:block;
+    font:22rpx/32rpx '微软雅黑';
+    color:#515151;
+    padding-left:6rpx;
+}
+
+.record_list{
+    margin-left:14rpx;
+}
+.record_list .item{
+    padding:10rpx 0 10rpx 80rpx;
+    position:relative;
+    margin-bottom:16rpx;
+    min-height:46rpx;
+}
+.record_list .item .icon{
+    display:block;
+    width:66rpx;
+    height:66rpx;
+    border-radius:50%;
+    position:absolute;
+    left:0;
+    top:50%;
+    margin-top:-33rpx; 
+}
+.record_list .item .date{
+    display:block;
+    font:20rpx/24rpx '微软雅黑';
+    color:#404040;
+}
+.record_list .item .time{
+    display:block;
+    font:20rpx/24rpx '微软雅黑';
+    color:#404040;
+}
+
+.sub_btn{
+    margin-top:50rpx;
+}
+.sub_btn button{
+    width:53%;
+    font:30rpx/60rpx '微软雅黑';
+    color:#fff;
+    background:#ffaa00;
+    border:none;
+    border-radius:40rpx;
+}

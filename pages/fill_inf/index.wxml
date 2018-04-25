@@ -1,0 +1,81 @@
+<view class='loadInfo'>
+    <text class="title">宝宝信息修改</text>
+    <form bindsubmit='sub_baby_inf'>
+        <view class="head_img">
+            <text>宝宝头像:</text>
+            <view class="up_head_img">
+                  <image src="{{head_img}}" bindtap='up_head_img'></image>
+            </view>
+        </view>
+        <view class='info'>
+            <!-- <view class="item">
+                <view class="left">宝宝昵称：</view>
+                <view class="right">
+                    <input name='name'></input>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">宝宝性别：</view>
+                <view class="right">
+                    <!-- <input name="gender"></input> -->
+             <!--        <picker value="{{sex_index}}" range="{{sex_arr}}" bindchange="normalPickerBindchange">
+                        {{sex_arr[sex_index]}}
+                    </picker>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">宝宝生日：</view>
+                <view class='bg right'>
+                    <picker mode="date" bindchange="bindDateChange">
+                        <view class="picker">
+                            {{date}}
+                        </view>
+                    </picker>
+                </view>
+            </view> -->
+            <view class="item">
+                <view class="left">生产孕周：</view>
+                <view class='bg right'>
+                    <picker value="{{dateValue}}" range="{{dateRange}}" bindchange='datePickerBindchange'>
+                        {{dateRange[dateValue]}}
+                    </picker>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">生产方式：</view>
+                <view class='bg right'>
+                    <picker value="{{wayValue}}" range="{{wayRange}}" bindchange='wayPickerBindchange'>
+                        {{wayRange[wayValue]}}
+                    </picker>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">出生体重：</view>
+                <view class='bg right'>
+                    <input name='weight' placeholder='单位kg'></input>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">出生身高：</view>
+                <view class='bg right'>
+                    <input name='high' placeholder='单位cm'></input>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">主带人：</view>
+                <view class='bg right'>
+                    <picker value="{{familyValue}}" range="{{familyRange}}" bindchange='familyPickerBindchange'>
+                        {{familyRange[familyValue]}}
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <button form-type='submit' class="submit">提交</button>
+    </form>
+</view>
+
+<!--提示弹框  -->
+<view class="toust_mark" wx:if="{{showToast}}">
+    <image src="/img/tip.png"></image>
+    <text>{{show_tip_msg}}</text>
+</view>

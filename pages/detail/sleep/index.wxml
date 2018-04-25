@@ -1,0 +1,56 @@
+<view class='feed'>
+    <image src='/img/sleep.png' mode='aspectFit'></image>
+</view>
+<form bindsubmit='submit'>
+    <view class='main'>
+        <view class='text'>
+            <view>开始日期</view>
+            <view>
+                <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+                    {{dateValue}}
+                </picker>
+            </view>
+        </view>
+        <view class='text'>
+            <view>开始时间</view>
+            <view>
+                <picker mode="time" value="{{timeValue}}" start="00:00" end="24:00" bindchange="timePickerBindchange">
+                    {{timeValue}}
+                </picker>
+            </view>
+        </view>
+        <view class='text'>
+            <view>结束日期</view>
+            <view>
+                <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange1">
+                    {{dateValue1}}
+                </picker>
+            </view>
+        </view>
+        <view class='text'>
+            <view>结束时间</view>
+            <view>
+                <picker mode="time" value="{{timeValue}}" start="00:00" end="24:00" bindchange="timePickerBindchange1">
+                    {{timeValue1}}
+                </picker>
+            </view>
+        </view>
+        <view class='text'>
+            <view>夜醒次数</view>
+            <view class="feed_amount">
+                <input name="wake_amount" placeholder-style="color:#fff;" type='number' value="1"></input>
+            </view>
+        </view>
+    </view>
+    <view class='footer'>
+        <view bindtap='reset'>重置</view>
+        <button form-type='submit' class="sub_btn">提交</button>
+    </view>
+</form>
+
+
+<!--提示弹框  -->
+<view class="toust_mark" wx:if="{{showToast}}">
+    <image src="/img/tip.png"></image>
+    <text>{{show_tip_msg}}</text>
+</view>

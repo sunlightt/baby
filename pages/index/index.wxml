@@ -1,0 +1,48 @@
+<view class='loadInfo' wx:if="{{!loading_status}}">  
+    <text class="title">宝宝信息录入</text>
+    <form bindsubmit='sub_baby_inf'>
+        <view class='info'>
+            <view class="item">
+                <view class="left">宝宝昵称：</view>
+                <view class="right">
+                    <input name='name'></input>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">宝宝性别：</view>
+                <view class="right">
+                    <!-- <input name="gender"></input> -->
+                    <picker value="{{sex_index}}" range="{{sex_arr}}" bindchange="normalPickerBindchange">
+                        {{sex_arr[sex_index]}}
+                    </picker>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">宝宝生日：</view>
+                <view class='bg right'>
+                    <picker mode="date" bindchange="bindDateChange">
+                        <view class="picker">
+                            {{date}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="item">
+                <view class="left">我是宝宝的：</view>
+                <view class='bg right'>
+                    <picker value="{{pickerValue}}" range="{{pickerRange}}" bindchange="normalPickerBindchange">
+                        {{pickerRange[pickerValue]}}
+                    </picker>
+                </view>
+            </view>
+
+        </view>
+        <button form-type='submit' class="submit">提交</button>
+    </form>
+</view>
+
+<!--提示弹框  -->
+<view class="toust_mark" wx:if="{{showToast}}">
+    <image src="/img/tip.png"></image>
+    <text>{{show_tip_msg}}</text>
+</view>

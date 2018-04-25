@@ -1,0 +1,84 @@
+<view class="parent">
+
+    <view class="main">
+        <view class='stars'>
+            <text>今日溜娃推荐指数</text>
+            <view class="star_list">
+                <image src="/img/ss.png"></image>
+                <image src="/img/ss.png"></image>
+            </view>
+        </view>
+        <view class="wether_inf">
+            <view class="header">
+                <view class="left">
+                    <text>32</text>
+                    <view class="wether_status">晴</view>
+                </view>
+                <view class="right">
+                    <text>4月17日 38“c~42"c</text>
+                    <text>PM2.5:67</text>
+                    <view class="area">
+                        <image src="/img/address.png"></image>
+                        北京
+                    </view>
+                </view>
+            </view>
+            <view class="wether_list">
+                <view class="item">
+                    <text class="time">11</text>
+                    <text class="tempreture">32℃</text>
+                </view>
+                <view class="item">
+                    <text class="time">11</text>
+                    <text class="tempreture">32℃</text>
+                </view>
+                <view class="item">
+                    <text class="time">11</text>
+                    <text class="tempreture">32℃</text>
+                </view>
+                <view class="item">
+                    <text class="time">11</text>
+                    <text class="tempreture">32℃</text>
+                </view>
+                <view class="item">
+                    <text class="time">11</text>
+                    <text class="tempreture">32℃</text>
+                </view>
+                <view class="item">
+                    <text class="time">11</text>
+                    <text class="tempreture">32℃</text>
+                </view>
+            </view>
+            <view class="wether_img">
+                <image src="/img/body.png"></image>
+            </view>
+        </view>
+        <view class='weather'>
+            <view class='title'>
+                <view>
+                    <image src="/img/tq.png"></image>
+                    穿衣指南
+                </view>
+            </view>
+            <view class="guide">
+                <view class="item">
+                    <view class="img">
+                         <image src="/img/yf.png" mode='widthFix'></image>
+                    </view>
+                    <text class="inf_name">短袖</text>
+                </view>
+                <view class="item">
+                    <text class="inf_name">+</text>
+                </view>
+                 <view class="item">
+                    <view class="img">
+                         <image src="/img/yf1.png" mode='widthFix'></image>
+                    </view>
+                    <text class="inf_name">薄外裤</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+</view>

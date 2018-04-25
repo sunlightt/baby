@@ -1,0 +1,65 @@
+.parent {
+    padding: 20rpx 28rpx 0;
+}
+
+.parent .title {
+    display: block;
+    font: 66rpx/88rpx '微软雅黑';
+    color: #191512;
+    text-align: center;
+}
+
+.parent .group .group_title {
+    display: block;
+    font: 34rpx/88rpx '微软雅黑';
+    padding: 0 10rpx;
+    color: #191512;
+}
+
+.parent .group .group_fill {
+    position: relative;
+    font: 34rpx/88rpx '微软雅黑';
+    color: #191512;
+    border: 1rpx solid #cccccb;
+    border-radius: 20rpx;
+    padding: 0 60rpx 0 10rpx;
+}
+
+.parent .group .group_fill input {
+    display: block;
+    height:88rpx;
+    font: 34rpx/88rpx '微软雅黑';
+    color: #191512;
+}
+
+.parent .group .checkboxChange_movement {
+    padding: 0 0 0 10rpx;
+}
+
+.parent .group .group_fill image {
+    display: block;
+    width: 32rpx;
+    height: 24rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 50%;
+    margin-top: -12rpx;
+}
+
+.parent .group .group_fill label {
+    display: block;
+    width: 100%;
+}
+
+.submit_report {
+    margin: 50rpx auto;
+}
+
+.submit_report button {
+    display: block;
+    width: 100%;
+    font: 32rpx/82rpx '微软雅黑';
+    color: #fff;
+    text-align: center;
+    background: #fa0;
+}

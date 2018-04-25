@@ -1,0 +1,73 @@
+page{
+    background-color: #F4F4F4;
+}
+.feed{
+    padding: 50rpx 0 30rpx 80rpx;
+}
+.feed image{
+    width: 18%;
+    height: 180rpx;
+}
+.main .text{
+    margin: 30rpx 30rpx;
+    display: flex;
+    justify-content: space-around;
+}
+.main .text view{
+    margin-right: 40rpx;
+}
+.main .text view:first-child{
+    display: block;
+    color: #ffffff;
+    width: 240rpx;
+    height: 60rpx;
+    background-color: #FF6E00;
+    border-radius: 30rpx;
+    font-size: 30rpx;
+    /* padding: 10rpx 30rpx;  */
+    text-align: center;
+    line-height: 60rpx;
+}
+.main .text view:last-child{
+    display: block;
+    color: #ffffff;
+    width: 380rpx;
+    height: 60rpx;
+    background-color: #FF6E00;
+    border-radius: 30rpx;
+    /* padding: 10rpx 100rpx; */
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 60rpx;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+}
+.footer view {
+    color: #ffffff;
+    display: block;
+    width:  100rpx;
+    height: 40rpx;
+    padding: 10rpx 60rpx;
+    font-size: 30rpx;
+    margin: 300rpx 30rpx 50rpx 0;
+    background-color: #FFAA00;
+    border-radius: 30rpx;
+    text-align: center;
+}
+
+.footer .sub_btn{
+    color: #ffffff;
+    display: block;
+    width:  100rpx;
+    height: 40rpx;
+    line-height:40rpx;
+    padding: 10rpx 60rpx;
+    font-size: 30rpx;
+    margin: 300rpx 30rpx 50rpx 0;
+    background-color: #FFAA00;
+    border-radius: 30rpx;
+    text-align: center;
+    box-sizing:content-box;
+}
