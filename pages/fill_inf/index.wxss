@@ -3,6 +3,13 @@
 .loadInfo{
     padding:20rpx 40rpx 80rpx;
 }
+
+.loadInfo .title{
+    display:block;
+    width:100%;
+    font:30rpx/50rpx '微软雅黑';
+    text-align:center;
+}
 .head_img{
    
    display:flex;
@@ -21,9 +28,38 @@
     position:relative;
     
 }
+.head_img .up_head_img .head_img_wrap{
+    position:relative;
+    width:150rpx;
+    height:150rpx;
+    border-radius:50%;
+    background:#fff;
+
+}
 .head_img .up_head_img image{
     display:block;
     width:150rpx;
     height:150rpx;
     border-radius:50%;
+    position:absolute;
+    left:0;
+    top:0;
+}
+.info .item .right{
+   background:none;
+}
+.info .item .right_item_group{
+    height:auto;
+    border-bottom:none;
+    
+}
+
+.item_radio .radio{
+    line-height:64rpx;
+}
+
+.item .tip{
+
+    font:34rpx/50rpx '微软雅黑';
+    color:#b3b0b0;
 }

@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "睡眠记录"
+    "navigationBarTitleText": "睡眠记录",
+    "enablePullDownRefresh": false
 }

@@ -138,3 +138,16 @@
     border:none;
     border-radius:40rpx;
 }
+
+
+.mark .complete_progress .success {
+    padding-top:100rpx;
+}
+
+.mark .complete_progress .btn, .mark .day_work .btn{
+
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+
+}

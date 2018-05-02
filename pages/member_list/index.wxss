@@ -1,0 +1,16 @@
+
+.parent{
+    padding:30rpx 30rpx 0;
+}
+
+.member_list .item{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    border-bottom:1rpx solid #333;
+}
+
+.member_list .item text{
+    display:inline-block;
+    font:32rpx/90rpx '微软雅黑';
+}

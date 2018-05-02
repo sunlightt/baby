@@ -1,5 +1,5 @@
 
-const app=getApp();
+const app = getApp();
 
 function fill_date(str) {
 
@@ -101,7 +101,7 @@ Page({
 
         var start_time_str = get_unix_time(start_time);
 
-        var character = Number(that.data.dbValue)+1;
+        var character = Number(that.data.dbValue) + 1;
 
         if (start_time_str > timestamp) {
 
@@ -130,7 +130,7 @@ Page({
             title: '提交中',
             icon: 'loading',
             duration: 1000
-        }); 
+        });
 
         wx.request({
             url: app.globalData.url + 'index.php/api/Index/shit_add',
@@ -181,5 +181,11 @@ Page({
             }
         })
 
+    },
+    db_detail: function (e) {
+
+        wx.navigateTo({
+            url: '/pages/detail/db_detail/index'
+        });
     }
 })

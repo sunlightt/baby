@@ -1,48 +1,465 @@
-<view class='loadInfo' wx:if="{{!loading_status}}">  
-    <text class="title">宝宝信息录入</text>
-    <form bindsubmit='sub_baby_inf'>
-        <view class='info'>
-            <view class="item">
-                <view class="left">宝宝昵称：</view>
-                <view class="right">
-                    <input name='name'></input>
-                </view>
-            </view>
-            <view class="item">
-                <view class="left">宝宝性别：</view>
-                <view class="right">
-                    <!-- <input name="gender"></input> -->
-                    <picker value="{{sex_index}}" range="{{sex_arr}}" bindchange="normalPickerBindchange">
-                        {{sex_arr[sex_index]}}
-                    </picker>
-                </view>
-            </view>
-            <view class="item">
-                <view class="left">宝宝生日：</view>
-                <view class='bg right'>
-                    <picker mode="date" bindchange="bindDateChange">
-                        <view class="picker">
-                            {{date}}
+<view class="page_container" wx:if="{{content_show_status}}">
+    <swiper indicator-dots='true' indicator-color='rgba(0,0,0,.1)' indicator-active-color='#787878' bindchange="change_view">
+        <swiper-item>
+            <view class="container">
+                <view class='feeding-recode'>
+                    <view class='nav'>
+                        <view class='feed'>
+                            <image src="/img/789.png"></image>
+                            喂养记录
                         </view>
-                    </picker>
+                        <view class='detail' bindtap='record_detail'>记录详情></view>
+                    </view>
+                    <view class='feed-detail'>
+                        <view class="item" bindtap='feed'>
+                            <view class="img">
+                                <image src='/img/icon5.png' mode='aspectFit'></image>
+                            </view>
+                            <text class="item_text">喂养</text>
+                        </view>
+                        <view class="item" bindtap='sleep'>
+                            <view class="img">
+                                <image src='/img/icon3.png' mode='aspectFit'></image>
+                            </view>
+                            <text class="item_text">睡眠</text>
+                        </view>
+                        <view class="item" bindtap='db'>
+                            <view class="img">
+                                <image src='/img/icon1.png' mode='aspectFit'></image>
+                            </view>
+                            <text class="item_text">大便</text>
+                        </view>
+                    </view>
+                    <view class='feed-detail'>
+                        <view class="item" bindtap='temperature'>
+                            <view class="img">
+                                <image src='/img/icon4.png' mode='aspectFit'></image>
+                            </view>
+                            <text class="item_text">体温</text>
+                        </view>
+                        <view class="item" bindtap='exercise'>
+                            <view class="img">
+                                <image src='/img/icon.png' mode='aspectFit'></image>
+                            </view>
+                            <text class="item_text">活动</text>
+                        </view>
+                        <view class="item" bindtap='height'>
+                            <view class="img">
+                                <image src='/img/icon2.png' mode='aspectFit'></image>
+                            </view>
+                            <text class="item_text">身高/体重</text>
+                        </view>
+                    </view>
                 </view>
-            </view>
-            <view class="item">
-                <view class="left">我是宝宝的：</view>
-                <view class='bg right'>
-                    <picker value="{{pickerValue}}" range="{{pickerRange}}" bindchange="normalPickerBindchange">
-                        {{pickerRange[pickerValue]}}
-                    </picker>
+                <button bindtap='tab_webview'>https请求</button>
+                <view class='day'>
+                    <view class='day-title'>
+                        <view class='day-task'>
+                            <image src='/img/794.png'></image>
+                            每日任务
+                        </view>
+                        <text bindtap="show_mark" data-type="1">完成进度></text>
+                    </view>
+                    <view class='day-detail'>
+                        <view bindtap="show_mark" data-type="2" data-item_type="{{item.type}}" data-index="{{index}}" data-id="{{item.id}}" wx:for="{{task_list_data}}">
+                            <view class='num'>{{index+1}}</view>
+                            <view class='text'>
+                                <text>{{item.type==1 ? '日常任务' : '学习任务'}}:{{item.title}}</text>
+                            </view>
+                            <view class="check_icon">
+                                <image src="/img/check_icon1.png" mode="widthFix" wx:if="{{check_arr_status[index]==1}}"></image>
+                                <image src="/img/check_icon.png" mode="widthFix" wx:else></image>
+                            </view>
+                        </view>
+                    </view>
                 </view>
+                <view class='weather'>
+                    <view class='title'>
+                        <view>
+                            <image src="/img/tq.png"></image>
+                            天气穿衣
+                        </view>
+                    </view>
+                    <view class='bottom' bindtap="star_num">
+                        <image src='/img/sun.jpg'></image>
+                        <text>今日遛娃推荐指数</text>
+                        <image src='/img/ss.png'></image>
+                        <image src='/img/ss.png'></image>
+                        <image src='/img/ss.png'></image>
+                        <image src='/img/ss.png'></image>
+                        <image src='/img/ss.png'></image>
+                    </view>
+                    <view class='end' bindtap="star_num">
+                        <image src='/img/byrf.png'></image>
+                        <text class='tq'>天气详情及穿衣推荐</text>
+                        <text class='detail'>查看详情</text>
+                    </view>
+                </view>
+                <!-- <button bindtap="draw_img">绘图</button>  -->
+                <!-- <button bindtap='member_list'>会员</button> -->
             </view>
+        </swiper-item>
+        <swiper-item>
+            <view class='container'>
+                <view class='top_bg'>
+                    <image src='/img/bg.png'></image>
+                </view>
+                <view class='header_img'>
+                    <image src='{{feed_case_inf.avatar}}' wx:if="{{feed_case_inf.avatar!=''}}" mode='aspectFill'></image>
+                    <image src='/img/head.jpg' wx:if="{{feed_case_inf.avatar==''}}"></image>
+                </view>
+                <view class='main'>
+                    <!-- <view class='top'></view> -->
+                    <view class='title'>{{feed_case_inf.nickname}}的个性化养育方案</view>
+                    <view class='sub-title' bindtap='fill_inf' data-head_img="{{feed_case_inf.avatar}}">
+                        <view class="left">
+                            <image src='/img/bj.png'></image>
+                            <text>北京市</text>
+                            <text>{{feed_case_inf.sex==1 ? '男' : '女'}}宝宝</text>
+                            <text>{{feed_case_inf.month}}个月</text>
+                        </view>
+                        <view class="right">
+                            <text class="color">宝宝档案</text>
+                        </view>
+                        <!-- <text>完善档案即可获得会员购买95折</text> -->
+                    </view>
 
-        </view>
-        <button form-type='submit' class="submit">提交</button>
-    </form>
+                    <!--未提交养育报告  -->
+                    <view class="main_container">
+                        <view class="tip" wx:if="{{!submit_report_status && !aim_time_show_report_status}}">
+                            <text>亲爱的家长，您还没有获取{{feed_case_inf.nickname}}的个性化养育方案哦~</text>
+                        </view>
+
+                        <!--提交了还没到三小时  -->
+                        <view class="tip" wx:if="{{submit_report_status && !aim_time_show_report_status}}">
+                            <text>您的数据已提交，个性化养育方案将在六个小时内反馈给您，请耐心等待~</text>
+                        </view>
+
+                        <view class="submit_report" wx:if="{{!submit_report_status && !aim_time_show_report_status}}">
+                            <button bindtap="submit_report">提交数据 获取报告</button>
+                        </view>
+                    </view>
+                    <!--已提交养育报告  -->
+                    <view class="mian_container" wx:if="{{submit_report_status && aim_time_show_report_status}}">
+                        <view class='text'>
+                            <view>亲爱的家长，{{feed_case_inf.nickname}}已经{{feed_case_inf.month>0 ? feed_case_inf.month+'个月' : ''}}{{feed_case_inf.day}}天大了哦，宝爸宝妈真是辛苦啦~，针对您辛勤的记录和反馈的宝宝生长发育各项信息，宝贝吖精心为您准备了{{feed_case_inf.nickname}}的{{feed_case_inf.start_time}}~{{feed_case_inf.start_time+1}}月龄个性化养育方案，一起来看看吧！同时，我们为您分配了私教老师来协助您~请加老师微信吧~
+                                <text class='wechat' bindtap='show_code' data-sex="{{feed_case_inf.sex}}" wx:if="{{feed_case_inf.sex==1}}">小王老师</text>
+                                <text class='wechat' bindtap='show_code' data-sex="{{feed_case_inf.sex}}" wx:if="{{feed_case_inf.sex==2}}">小易老师</text>
+                            </view>
+                        </view>
+                        <view class='label'>
+                            <view class='y-label'>
+                                <view bindtap="report_detail" data-index='1'>
+                                    <image src="/img/789.png"></image> 生长发育评估
+                                </view>
+                                <view bindtap="report_detail" data-index='3'>
+                                    <image src="/img/789.png"></image> 个性养育推荐
+                                </view>
+                                <view bindtap="report_detail" data-index='5'>
+                                    <image src="/img/789.png"></image> 阶段培育目标
+                                </view>
+                                <view bindtap="report_detail" data-index='7'>
+                                    <image src="/img/789.png"></image> 可能面临问题
+                                </view>
+                            </view>
+                            <view class='o-label'>
+                                <view bindtap="report_detail" data-index='2'>
+                                    <image src="/img/789.png"></image> 喂养睡眠方案
+                                </view>
+                                <view bindtap="report_detail" data-index='4'>
+                                    <image src="/img/789.png"></image> 能力发展概况
+                                </view>
+                                <view bindtap="report_detail" data-index='6'>
+                                    <image src="/img/789.png"></image> 更高难度目标
+                                </view>
+                                <view bindtap="report_detail" data-index='8'>
+                                    <image src="/img/789.png"></image> 基础知识课程
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
 </view>
 
-<!--提示弹框  -->
-<view class="toust_mark" wx:if="{{showToast}}">
-    <image src="/img/tip.png"></image>
-    <text>{{show_tip_msg}}</text>
+<view class="mark" wx:if="{{mark_off}}">
+    <view class="mark_main">
+        <view class="close" bindtap='close_mark'>
+            <image src="/img/close.png" mode='widthFix'></image>
+        </view>
+        <!--日常任务  -->
+        <view class="day_work" wx:if="{{day_work_onoff}}">
+            <view class="title">{{task_inf.type==1 ? '日常任务' : '学习任务'}}:</view>
+             <view class="content_msg">{{task_inf.title}}</view> 
+            <view class="content_msg">{{task_inf.content}}</view>
+            <!-- <view class="content_msg"></view> -->
+            <!-- <view class="content_msg">大运动-给宝宝做3分钟竖头l联系</view> -->
+            <view class="class_msg" wx:if="{{task_inf.url!=''}}" >
+                <text data-url="{{task_inf.url}}" data-src="{{task_inf.url}}" bindtap='tab_webview'>{{task_inf.course}}</text>
+            </view>
+            <view class="btn">
+                <button bindtap='confirm_btn' wx:if="{{!complete_task_status}}">完成任务</button>
+            </view>
+        </view>
+
+        <!--完成进度  -->
+        <view class="complete_progress" wx:if="{{!day_work_onoff}}">
+            <view class="title">今日任务完成进度</view>
+
+            <view class="msg_content">{{progress_num}}%</view>
+
+            <text class="success" wx:if="{{progress_num==100}}">恭喜!,您已全部完成</text>
+            <text class="success" wx:if="{{progress_num!=100}}">再接再厉!</text>
+
+            <view class="btn">
+                <button bindtap='confirm_btn'>确定</button>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<!--显示老师二维码  -->
+<view class="mark_code" wx:if="{{mark_code_show_code}}">
+    <view class="code">
+        <view class="close" bindtap='close_show_code'>x</view>
+        <image src="{{code_src}}" mode='widthFix'></image>
+    </view>
+</view>
+
+<!--首次弹框  -->
+<view class="pop_mark" wx:if="{{!loading_status}}">
+    <view class="pop_mark_content">
+        <view class="pop_mark_content_section">
+            <swiper current="{{pop_mark_swiper_current_view_index}}" bindchange="pop_mark_swiper_bindchange">
+                <block>
+                    <swiper-item>
+                        <view class="section_item">
+                            <view class="section_item_title">
+                                <text>关于小程序</text>
+                                <view class="head_bg">
+                                    <image src="/img/pop_mark_img.png"></image>
+                                </view>
+                            </view>
+                            <view class="section_item_option">
+                                <view class="section_item_option_title">
+                                    <text>随时随地玩转小程序</text>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <image src="/img/pop_mark_icon1.png" mode='widthFix'></image>
+                                    <text>记录每一点数据，关注宝贝每一点改变</text>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <image src="/img/pop_mark_icon3.png" mode='widthFix'></image>
+                                    <text>完成每日任务，轻松达成每一次进步</text>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <image src="/img/pop_mark_icon4.png" mode='widthFix'></image>
+                                    <text>天气穿衣提醒，提心关爱每一个细节</text>
+                                </view>
+                            </view>
+                            <view class="section_item_option section_item_option_two">
+                                <view class="section_item_option_title">
+                                    <text>您还可以</text>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <image src="/img/pop_mark_icon5.png" mode='widthFix'></image>
+                                    <text>提交喂养记录，获取个性养育方案</text>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <image src="/img/pop_mark_icon5.png" mode='widthFix'></image>
+                                    <text>入驻育儿社群，专家在线答疑解惑</text>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <image src="/img/pop_mark_icon5.png" mode='widthFix'></image>
+                                    <text>学习专家课程，掌握育儿实操技能</text>
+                                </view>
+                            </view>
+                            <view class="button">
+                                <button bindtap="pop_mark_swiper_next_step">下一步</button>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+                <block>
+                    <swiper-item>
+                        <view class="section_item section_item_two section_item_five ">
+                            <view class="section_item_title">
+                                <text>服务流程</text>
+                                <view class="head_bg">
+                                    <image src="/img/pop_mark_img.png"></image>
+                                </view>
+                            </view>
+                            <view class="section_item_option">
+                                <view class="section_item_option_msg">
+                                    <view>1. 日常打卡及分享</view>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <view>2. 完善宝宝的喂养记录、活动指标</view>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <view>3. 获取当月个性化养育方案</view>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <view>4. 添加顾问老师微信，加入育儿社群</view>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <view>5. 畅享会员服务（个性化育儿报告、专家答疑、基础育儿课程等）</view>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <view>6. 体验更多会员服务（个性化成长指导、学习专家课程等）</view>
+                                </view>
+                            </view>
+                            <view class="button">
+                                <button class="pre_btn" bindtap="pop_mark_swiper_pre_step">上一步</button>
+                                <button bindtap="pop_mark_swiper_next_step">下一步</button>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+                <block>
+                    <swiper-item>
+                        <view class="section_item section_item_two">
+                            <view class="section_item_title">
+                                <text>新人优惠</text>
+                                <view class="head_bg">
+                                    <image src="/img/pop_mark_img.png"></image>
+                                </view>
+                            </view>
+                            <view class="section_item_option">
+                                <view class="section_item_option_msg">
+                                    <view>1. 连续使用喂养记录和每日任务并打开分型满
+                                        <text>3天 ，免费</text>获得当月个性化养育方案及试听课程；</view>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <view>2 . 连续使用喂养记录和每日任务并打开分享满
+                                        <text> 7天</text>，免费你获赠价值
+                                        <text> 199元</text>一对一私教课程;</view>
+                                </view>
+                                <view class="section_item_option_msg">
+                                    <view>3 .完善宝宝档案，享受优享、尊享会员
+                                        <text>95折 </text>超值折扣特权</view>
+                                </view>
+                            </view>
+                            <view class="tip">注:达成条件即可联系私人顾问老师领取奖励</view>
+                            <view class="button">
+                                <button class="pre_btn" bindtap="pop_mark_swiper_pre_step">上一步</button>
+                                <button bindtap="pop_mark_swiper_next_step">下一步</button>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+                <block>
+                    <swiper-item>
+                        <view class="section_item section_item_two section_item_four ">
+                            <view class="section_item_title">
+                                <text>小程序便捷入口</text>
+                                <view class="head_bg">
+                                    <image src="/img/pop_mark_img.png"></image>
+                                </view>
+                            </view>
+                            <view class="section_item_option">
+                                <view class="section_item_option_progress_img">
+                                    <image src="http://p6v1wjzjz.bkt.clouddn.com/loading_mark_img.png" mode="widthFix"></image>
+                                </view>
+                            </view>
+                            <view class="button">
+                                <button class="pre_btn" bindtap="pop_mark_swiper_pre_step">上一步</button>
+                                <button bindtap="pop_mark_swiper_next_step">下一步</button>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+                <block>
+                    <swiper-item>
+                        <view class="section_item section_item_three">
+                            <view class="section_item_title">
+                                <text>宝宝信息收集</text>
+                                <view class="head_bg">
+                                    <image src="/img/pop_mark_img.png"></image>
+                                </view>
+                            </view>
+                            <form bindsubmit='sub_baby_inf'>
+                                <view class="section_item_option">
+                                    <view class='info'>
+                                        <view class="item">
+                                            <view class="left">宝宝昵称：</view>
+                                            <view class="right">
+                                                <input name='name'></input>
+                                            </view>
+                                        </view>
+                                        <view class="item">
+                                            <view class="left">宝宝性别：</view>
+                                            <view class="right">
+                                                <!-- <input name="gender"></input> -->
+                                                <picker value="{{sex_index}}" range="{{sex_arr}}" bindchange="pop_mark_normalPickerBindchange">
+                                                    {{sex_arr[sex_index]}}
+                                                </picker>
+                                                <image class="icon" src="/img/down_icon.png"></image>
+                                            </view>
+                                        </view>
+                                        <view class="item">
+                                            <view class="left">宝宝生日：</view>
+                                            <view class='bg right'>
+                                                <picker mode="date" bindchange="pop_mark_bindDateChange">
+                                                    <view class="picker">
+                                                        {{date}}
+                                                    </view>
+                                                </picker>
+                                                <image class="icon" src="/img/down_icon.png"></image>
+                                            </view>
+                                        </view>
+                                        <view class="item relationship">
+                                            <view class="left">我是宝宝的：</view>
+                                            <view class='bg right right_item_group'>
+                                                <!-- <picker value="{{pickerValue}}" range="{{pickerRange}}" bindchange="normalPickerBindchange">
+                                                    {{pickerRange[pickerValue]}}
+                                                </picker> -->
+                                                <view class="right_item ">
+                                                    <radio-group class="radio-group" bindchange="radioChange">
+                                                        <view class="item_radio">
+                                                            <label class="radio">
+                                                                <radio value="1" />爸爸
+                                                            </label>
+                                                            <label class="radio">
+                                                                <radio value="2" />妈妈
+                                                            </label>
+                                                        </view>
+                                                        <view class="item_radio">
+                                                            <label class="radio">
+                                                                <radio value="3" />爷爷
+                                                            </label>
+                                                            <label class="radio">
+                                                                <radio value="4" />奶奶
+                                                            </label>
+                                                        </view>
+                                                        <view class="item_radio">
+                                                            <label class="radio">
+                                                                <radio value="5" />外公
+                                                            </label>
+                                                            <label class="radio">
+                                                                <radio value="6" />外婆
+                                                            </label>
+                                                        </view>
+                                                    </radio-group>
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <!-- <button form-type='submit' class="submit">提交</button> -->
+                                </view>
+                                <view class="button">
+                                    <button class="pre_btn" bindtap="pop_mark_swiper_pre_step">上一步</button>
+                                    <button form-type='submit'>完 成</button>
+                                </view>
+                            </form>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+
+        </view>
+    </view>
 </view>

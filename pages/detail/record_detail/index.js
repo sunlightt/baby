@@ -1,6 +1,6 @@
 
 
-const app=getApp();
+const app = getApp();
 
 var now = new Date();//今天
 var n = 0;
@@ -21,7 +21,10 @@ Page({
         current_date: null,
         record_data: [],
 
-        current_time_str:null
+        current_time_str: null,
+
+        mark_off: false,
+        month_rport_submit_num_status:false
 
     },
 
@@ -35,11 +38,11 @@ Page({
 
     },
 
-    get_record_history: function (time){
+    get_record_history: function (time) {
 
-        var that=this;
+        var that = this;
 
-        if (!time){
+        if (!time) {
 
             time = that.data.current_time_str;
 
@@ -50,19 +53,17 @@ Page({
         var currentdate = data_ob.getFullYear() + '-' + fill_date(data_ob.getMonth() + 1) + '-' + fill_date(data_ob.getDate());
 
         wx.request({
-            url: app.globalData.url +'index.php/api/Index/record_detail',
-            data:{
-                uid:wx.getStorageSync('uid'),
+            url: app.globalData.url + 'index.php/api/Index/record_detail',
+            data: {
+                uid: wx.getStorageSync('uid'),
                 time: currentdate
             },
-            success:function(res){
+            success: function (res) {
 
-                
-                if(res.data.status==200){
 
-                    console.log(res.data.data);
+                if (res.data.status == 200) {
 
-                    var  record_data= res.data.data;
+                    var record_data = res.data.data;
 
                     record_data.total3 = (record_data.total3).toFixed(1);
 
@@ -72,22 +73,22 @@ Page({
 
                     });
 
-                }else{
+                } else {
 
                     wx.showToast({
                         title: '获取数据失败',
                         icon: 'loading',
                         duration: 1000
-                    });   
+                    });
 
                 }
             },
-            fail:function(res){
- 
+            fail: function (res) {
+
                 wx.showToast({
                     title: '请求失败',
-                    icon:'loading',
-                    duration:1000
+                    icon: 'loading',
+                    duration: 1000
                 });
 
             }
@@ -122,7 +123,7 @@ Page({
 
         var test_date_str = nowTime + (7 - day) * oneDayLong;
 
-        var currentdate =null;
+        var currentdate = null;
 
         for (var i = 0; i < 7; i++) {
 
@@ -142,7 +143,7 @@ Page({
                 });
 
 
-                currentdate = data_ob.getFullYear() + '-' + fill_date(data_ob.getMonth()+1) + '-' + fill_date(data_ob.getDate());
+                currentdate = data_ob.getFullYear() + '-' + fill_date(data_ob.getMonth() + 1) + '-' + fill_date(data_ob.getDate());
 
             }
 
@@ -176,9 +177,9 @@ Page({
         var date = new Date(now.getTime() + n * 7 * 24 * 3600 * 1000);
         that.week(date);
     },
-    filter_date:function(e){
+    filter_date: function (e) {
 
-        var that=this;
+        var that = this;
 
         var time_str = e.currentTarget.dataset.time_str;
 
@@ -194,9 +195,49 @@ Page({
 
         });
     },
-    submit_report:function(e){
+    show_mark: function (e) {
 
-        var that=this;
+        var that = this;
+
+        console.log(wx.getStorageSync('month_rport_submit_num_status'));
+
+        console.log(wx.getStorageInfoSync());
+
+        if (!wx.getStorageSync('month_rport_submit_num_status')) {
+
+            that.setData({
+
+                mark_off: true,
+                day_work_onoff: false,
+                month_rport_submit_num_status: false
+
+            });
+
+        } else {
+
+            that.setData({
+
+                mark_off: true,
+                day_work_onoff: false,
+                month_rport_submit_num_status: true
+
+            });
+        }
+    },
+    cancel_btn: function (e) {
+
+        var that = this;
+
+        that.setData({
+
+            mark_off: false,
+            day_work_onoff: false
+
+        });
+    },
+    confirm_btn: function (e) {
+
+        var that = this;
 
         var pages = getCurrentPages();
         var prevPage = pages[pages.length - 2];  //上一个页面
@@ -204,12 +245,21 @@ Page({
         prevPage.setData({
 
             report_time: that.data.current_date
-            
-    
+
+        });
+
+        wx.setStorageSync('report_time', that.data.current_date);
+
+        that.setData({
+
+            mark_off: false,
+            day_work_onoff: false
+
         });
 
         wx.navigateTo({
             url: '/pages/supplementray_inf/index'
         })
-    }
+
+    },
 })

@@ -1,5 +1,5 @@
 
-const app=getApp();
+const app = getApp();
 
 const WxParse = require('../../wxParse/wxParse.js');
 
@@ -20,26 +20,39 @@ var code7 = '<p><span style="font-size: 20px; color: rgb(247, 117, 103); font-we
 
 var code8 = '<p><span style="font-size: 20px; color: rgb(247, 117, 103); font-weight: bold;">宝爸宝妈的本月课程清单： </span></p><p><span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;"><span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;"><span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;"><span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;"><span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;">《1月龄疫苗提醒及注意事项》<span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;">、</span><span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;">《母乳喂养的重要性》、</span></span>《1月龄宝宝生长发育及能力发展总结》、《宝宝出现这几个动作也许是非条件反射》<span style="caret-color: rgb(77, 128, 191); color: rgb(77, 128, 191); font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, Helvetica, Tahoma, Arial, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Heiti, 黑体, sans-serif; font-size: 14px; white-space: pre-wrap;">、</span></span>《新生儿体重下降家长不要慌》、《新生儿出现身上蜕皮是怎么回事》、《带你了解新生儿各种皮肤问题》、</span>《如何清洁新生儿肚脐》、《新生儿正确抱姿有哪些》、《如何为新生儿洗澡及注意事项》、《新生儿纸尿裤选择及使用指导》</span></span></p>';
 
+
+var wxCharts = require('../../utils/wxcharts.js');
+var lineChart = null;
+
+
+// var simulationData=null;
+
+
+
 Page({
 
-    data:{
+    data: {
 
-        report_inf:{},
+        report_inf: {},
 
-        current_index:null
+        current_index: null
 
     },
 
     onLoad: function (options) {
 
-        var  that = this;
+        var that = this;
+
+        var userinf_data = wx.getStorageSync('userinf_data');
 
         that.setData({
 
-            report_time: options.report_time,
-            report_inf:{},
-            current_index:options.index
-       
+            // report_time: options.report_time,
+            report_time: wx.getStorageSync('report_time'),
+            report_inf: {},
+            current_index: options.index,
+            baby_nickname: userinf_data.nickname
+
         });
 
         if (options.index == 1) {
@@ -95,63 +108,72 @@ Page({
 
         }
 
+
+
+        that.get_height_draw_data();
+
+
+
+
+
+
     },
     // 生长发育
-    get_growth_devlopment_report_inf:function(e){
+    get_growth_devlopment_report_inf: function (e) {
 
-        var that=this;
+        var that = this;
 
         wx.request({
-            url: app.globalData.url +'index.php/api/User/h_weight',
-            data:{
+            url: app.globalData.url + 'index.php/api/User/h_weight',
+            data: {
 
-                uid:wx.getStorageSync('uid'),
+                uid: wx.getStorageSync('uid'),
                 time: that.data.report_time
             },
-            success:function(res){
+            success: function (res) {
 
-                if(res.data.status==200){
+                if (res.data.status == 200) {
 
                     console.log(res);
 
                     that.setData({
 
-                        report_inf:res.data.data
+                        report_inf: res.data.data
 
                     });
 
-                   
 
 
-                }else{
+
+                } else {
 
                     wx.showToast({
                         title: '获取数据失败',
                         icon: 'loading',
                         duration: 1000
                     });
-                    
+
                 }
 
 
             },
-            fail:function(res){
+            fail: function (res) {
 
                 wx.showToast({
                     title: '请求失败',
-                    icon:'loading',
-                    duration:1000
+                    icon: 'loading',
+                    duration: 1000
                 });
             }
         })
 
     },
-    get_feed_sleep_report_inf:function(e){
+    get_feed_sleep_report_inf: function (e) {
 
         var that = this;
 
         var report_inf = that.data.report_inf;
-        
+
 
         wx.request({
             url: app.globalData.url + 'index.php/api/User/feeds',
@@ -173,9 +195,6 @@ Page({
                         report_inf: report_inf
 
                     });
-
-                    
-
 
                 } else {
 
@@ -220,10 +239,6 @@ Page({
                 if (res.data.status == 200) {
 
                     report_inf.shuimian = res.data.data.shuimian;
-                    // report_inf.shuimian = res.data.data.zhuyi;
-                    // report_inf.shuimian = res.data.data.tiaozheng;
-
-                    console.log(res.data.data.shuimian);
 
                     that.setData({
 
@@ -231,17 +246,11 @@ Page({
 
                     });
 
-                    console.log(res.data.data.tiaozheng.content);
-
                     var code_str = res.data.data.tiaozheng.content;
 
                     WxParse.wxParse('get_sleep_report_tiaozheng_inf', 'html', res.data.data.tiaozheng.content, that, 5);
 
                     WxParse.wxParse('get_sleep_report_zhuyi_inf', 'html', res.data.data.zhuyi.content, that, 5);
-
-                    // WxParse.wxParse('get_sleep_report_tiaozheng_inf', 'html', code_str, that, 5);
-
-                    // WxParse.wxParseTemArray("get_sleep_report_inf_inf", 'html', , that, 5); 
 
 
                 } else {
@@ -268,7 +277,7 @@ Page({
 
 
     },
-    get_person_intro_report_inf:function(e){
+    get_person_intro_report_inf: function (e) {
 
         var that = this;
 
@@ -299,7 +308,6 @@ Page({
 
                     WxParse.wxParse('get_sleep_report_qinzi_inf', 'html', res.data.data.qinzi.content, that, 5);
                     WxParse.wxParse('get_sleep_report_wanju_inf', 'html', res.data.data.wanju.content, that, 5);
-                    // WxParse.wxParse('get_sleep_report_zhuyi_inf', 'html', res.data.data.zhuyi.content, that, 5);
 
 
                 } else {
@@ -324,10 +332,10 @@ Page({
         })
 
 
-        
+
     },
-    
-    get_ability_report_inf:function(e){
+
+    get_ability_report_inf: function (e) {
 
         var that = this;
 
@@ -339,7 +347,7 @@ Page({
             data: {
 
                 uid: wx.getStorageSync('uid'),
-                type:1,
+                type: 1,
                 time: that.data.report_time
             },
             success: function (res) {
@@ -380,7 +388,7 @@ Page({
 
 
     },
-    get_steep_bring_report_inf:function(e){
+    get_steep_bring_report_inf: function (e) {
 
         var that = this;
 
@@ -431,7 +439,7 @@ Page({
 
 
     },
-    get_hight_aim_report_inf:function(e){
+    get_hight_aim_report_inf: function (e) {
 
         var that = this;
 
@@ -483,7 +491,7 @@ Page({
 
 
     },
-    get_meet_question_report_inf:function(e){
+    get_meet_question_report_inf: function (e) {
 
         var that = this;
 
@@ -494,7 +502,7 @@ Page({
             data: {
 
                 uid: wx.getStorageSync('uid'),
-                type:4,
+                type: 4,
                 time: that.data.report_time
             },
             success: function (res) {
@@ -534,7 +542,7 @@ Page({
 
 
     },
-    get_base_class_report_inf:function(e){
+    get_base_class_report_inf: function (e) {
 
         var that = this;
 
@@ -583,9 +591,303 @@ Page({
             }
         })
 
-        
+
+    },
+
+    wxParseTagATap: function (e) {
+
+        console.log('ceshi');
+    },
+
+    // 获取身高曲线图数据
+    get_height_draw_data: function (e) {
+
+        var that = this;
+
+        wx.request({
+            url: app.globalData.url + 'index.php/api/User/get_pic',
+            data: {
+                uid: wx.getStorageSync('uid'),
+                sex: wx.getStorageSync('userinf_data').sex
+            },
+            success: function (res) {
+
+                console.log(res.data);
+
+                if (res.data.status == 200) {
+
+                    var weight_refer_draw_data = res.data.data.xian[1];
+
+                    var hight_refer_draw_data = res.data.data.xian[2];
+
+                    var baby_weight_draw_data = res.data.data.actual[17].weight;
+
+                    var baby_height_draw_data = res.data.data.actual[17].height;
+
+                    var weight_refer_draw_data_arr = [[], [], [], [], [], [], []];
+
+                    var hight_refer_draw_data_arr = [[], [], [], [], [], [], []];
+
+                    var for_in_index = 0;
+
+                    var for_in_index1 = 0;
+
+                    for (var attr in weight_refer_draw_data) {
+
+                        console.log(attr);
+
+                        for (var i = 0; i < weight_refer_draw_data[attr].length; i++) {
+
+                            weight_refer_draw_data_arr[for_in_index].push(Number(weight_refer_draw_data[attr][i].zhi));
+
+                        }
+
+                        for_in_index++;
+
+                    }
+
+                    for (var attr in hight_refer_draw_data) {
+
+                        for (var i = 0; i < hight_refer_draw_data[attr].length ; i++) {
+
+                            hight_refer_draw_data_arr[for_in_index1].push(Number(hight_refer_draw_data[attr][i].zhi));
+
+                        }
+
+                        for_in_index1++;
+
+                    }
+
+
+
+                    console.log(hight_refer_draw_data_arr);
+
+                    console.log(hight_refer_draw_data_arr[1]);
+
+
+                    console.log(weight_refer_draw_data);
+
+
+                    // canvas
+                    var windowWidth = 320;
+                    try {
+                        var res = wx.getSystemInfoSync();
+                        windowWidth = res.windowWidth;
+                    } catch (e) {
+                        console.error('getSystemInfoSync failed!');
+                    }
+
+                    var simulationData = that.createSimulationData();
+
+
+                    lineChart = new wxCharts({
+                        canvasId: 'lineCanvas',
+                        type: 'line',
+                        categories: simulationData.categories,
+                        animation: true,
+                        // background: '#f5f5f5',
+                        series: [{
+                            name: '宝宝',
+                            data: [baby_height_draw_data],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        },
+                        {
+                            name: '97%',
+                            data: hight_refer_draw_data_arr[4],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        },
+                        {
+                            name: '85%',
+                            data: hight_refer_draw_data_arr[3],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        }, {
+                            name: '50%',
+                            data: hight_refer_draw_data_arr[2],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        },
+                        {
+                            name: '15%',
+                            data: hight_refer_draw_data_arr[1],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        },
+                        {
+                            name: '3%',
+                            data: hight_refer_draw_data_arr[0],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        }
+                        ],
+                        xAxis: {
+                            disableGrid: true
+                        },
+                        yAxis: {
+                            title: '身高（cm）',
+                            format: function (val) {
+                                // console.log(val);
+                                return val.toFixed(2);
+                            },
+                            min: 40,
+                            max: 100,
+                            disabled: false
+                        },
+                        width: windowWidth,
+                        height: 300,
+                        dataLabel: false,
+                        dataPointShape: false,
+                        extra: {
+                            lineStyle: 'curve'
+                        }
+                    });
+
+
+                    lineChart = new wxCharts({
+                        canvasId: 'lineCanvas1',
+                        type: 'line',
+                        categories: simulationData.categories,
+                        animation: true,
+                        // background: '#f5f5f5',
+                        series: [{
+                            name: '宝宝',
+                            data: [baby_weight_draw_data],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        },
+                        {
+                            name: '97%',
+                            data: weight_refer_draw_data_arr[4],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        }, {
+                            name: '85%',
+                            data: weight_refer_draw_data_arr[3],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        }, {
+                            name: '50%',
+                            data: weight_refer_draw_data_arr[2],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        },
+                        {
+                            name: '15%',
+                            data: weight_refer_draw_data_arr[1],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        },
+                        {
+                            name: '3%',
+                            data: weight_refer_draw_data_arr[0],
+                            format: function (val, name) {
+                                return val.toFixed(2) + '万';
+                            }
+                        }
+                        ],
+                        xAxis: {
+                            disableGrid: true
+                        },
+                        yAxis: {
+                            title: '体重（kg）',
+                            format: function (val) {
+                                // console.log(val);
+                                return val.toFixed(2);
+                            },
+                            min: 0,
+                            max: 16,
+                            disabled: false
+                        },
+                        width: windowWidth,
+                        height: 300,
+                        dataLabel: false,
+                        dataPointShape: false,
+                        extra: {
+                            lineStyle: 'curve'
+                        }
+                    });
+
+
+
+
+
+
+
+
+
+
+
+                }
+
+            },
+            fail: function (res) {
+
+                wx.showToast({
+                    title: '请求失败',
+                    icon: 'loading',
+                    duration: 1000
+                });
+
+            }
+        })
+
+    },
+
+    // canvas
+    touchHandler: function (e) {
+        lineChart.showToolTip(e, {
+            // background: '#7cb5ec',
+            format: function (item, category) {
+                return category + ' ' + item.name + ':' + item.data
+            }
+        });
+    },
+    createSimulationData: function () {
+        var categories = [];
+        var data = [];
+        var data1 = [];
+        for (var i = 0; i < 7; i++) {
+
+            // categories.push('2016-' + (i + 1));
+
+            categories.push(i);
+
+            data.push(Math.random() * (90 - 40) + 40);
+
+            data1.push(Math.random() * (12 - 1) + 1);
+        }
+        // data[4] = null;
+        return {
+            categories: categories,
+            data: data,
+            data1: data1
+        }
+    },
+    updateData: function () {
+        var simulationData = this.createSimulationData();
+        var series = [{
+            name: '成交量1',
+            data: simulationData.data,
+            format: function (val, name) {
+                return val.toFixed(2) + '万';
+            }
+        }];
+        lineChart.updateData({
+            categories: simulationData.categories,
+            series: series
+        });
     }
-
-
-
-})
+});

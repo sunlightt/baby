@@ -1,4 +1,5 @@
 {
      "navigationBarTitleText": "喂养记录",
-     "navigationBarTextStyle": "white"
+     "navigationBarTextStyle": "white",
+     "enablePullDownRefresh": false
 }

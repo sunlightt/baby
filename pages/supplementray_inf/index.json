@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "信息补充"
+    "navigationBarTitleText": "信息补充",
+    "enablePullDownRefresh": false
 }

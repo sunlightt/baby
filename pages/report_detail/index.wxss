@@ -1,47 +1,110 @@
-page{
-    height:100%;
-}
-.parent{
-    height:100%;
-    padding:24rpx 54rpx 0;
-}
-.parent .header{
-    padding-bottom:30rpx;
-}
-.parent .header .poster image{
-    display:block;
-    width:100%;
-}
-.parent .header .advice text{
-    display:block;
-    font:28rpx/80rpx '微软雅黑';
-    color:#ff6d00;
+page {
+    height: 100%;
 }
 
-.parent .main{
-
-    min-height:34%;
-    
+.parent {
+    height: 100%;
+    /* padding:24rpx 54rpx 0; */
+    padding: 24rpx 0 0;
 }
 
-.parent .footer image{
-    display:block;
-    width:100%;
+.parent .header {
+    padding:0 54rpx 30rpx;
+    /* padding-bottom: 30rpx; */
+}
+
+.parent .header .poster image {
+    display: block;
+    width: 100%;
+}
+
+.parent .header .advice text {
+    display: block;
+    font: 28rpx/80rpx '微软雅黑';
+    color: #ff6d00;
+}
+
+.parent .main {
+    min-height: 34%;
+}
+.parent .footer{
+    padding:0 54rpx;
+}
+.parent .footer image {
+    display: block;
+    width: 100%;
+}
+
+.main view {
+    /* display: inline-block; */
+    /* font-size:28rpx; */
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, ;
+}
+
+.main .wxParse-p {
+    display: block;
+}
+
+.main .wxParse-p .wxParse-span {
+    display: block;
+    padding-top: 30rpx;
+}
+
+.main .height_weight view {
+    padding: 30rpx 0;
+}
+
+.tip_msg .title {
+    display: block;
+    font: 42rpx/60rpx '微软雅黑';
+    color: #f77567;
+    font-weight: bold;
+}
+
+.tip_msg .sub_title {
+    display: block;
+    line-height: 60rpx;
+    font: 28rpx/60rpx '微软雅黑';
+    color: rgb(247, 117, 103);
+    font-weight: bold;
+    padding: 32rpx 0;
+}
+
+.main .canvas_container {
+    display: block;
+}
+
+.main .canvas_container .container {
+    width: 100%;
+}
+
+.main .wrap_padding  , .main .height_weight .wrap_padding {
+    padding: 0 54rpx;
+    overflow-x:hidden;
 }
 
 
-.main view{
-    display:inline-block;
+
+.main .wrap_padding .wxParse-hr{
+    width:100% !important;
+} 
+
+/*canvas  */
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    font-size: 35rpx;
+    color: #333;
+    font-family: Helvetica, Arial, "Helvetica Neue", "Droid Sans", "Microsoft YaHei", sans-serif;
 }
 
-.tip_msg .title{
-    display:block;
-    font:52rpx/70rpx '微软雅黑';
-    color:#f77567;
-
-}
-.tip_msg .sub_title{
-    display:block;
-    font:32rpx/60rpx '微软雅黑';
-    color:#f77567;
+.canvas {
+    width: 100%;
+    height: 300px;
 }

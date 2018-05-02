@@ -3,7 +3,6 @@ const app = getApp();
 
 function fill_date(str) {
 
-
     return Number(str) < 10 ? '0' + str : str;
 
 }
@@ -26,7 +25,7 @@ Page({
         timeValue: '12:20',
         dateValue: '2018-4-17',
 
-        multiArray: [['36', '37', '38', '39', '40', '41','42'], ['0','1', '2', '3', '4', '5', '6', '7', '8', '9']],
+        multiArray: [['36', '37', '38', '39', '40', '41', '42'], ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']],
         multiIndex: [0, 0],
 
         show_tip_msg: '',
@@ -93,8 +92,6 @@ Page({
             dbValue: e.detail.value
         })
     },
-
-
 
     submit: function (e) {
 

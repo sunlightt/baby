@@ -1,5 +1,10 @@
 <view class='feed'>
-    <image src='/img/hd.png' mode='aspectFit'></image>
+    <view class="item_title_inf">
+         <view class="title_icon" >
+              <image src="/img/icon.png"></image>
+         </view>
+         <text class="title_text">活动</text>
+    </view>
 </view>
 <form bindsubmit='submit'>
     <view class='main'>

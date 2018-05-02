@@ -1,5 +1,10 @@
 <view class='feed'>
-    <image src='/img/sleep.png' mode='aspectFit'></image>
+    <view class="item_title_inf">
+         <view class="title_icon" >
+              <image src="/img/icon3.png"></image>
+         </view>
+         <text class="title_text">睡眠</text>
+    </view>
 </view>
 <form bindsubmit='submit'>
     <view class='main'>
@@ -38,7 +43,7 @@
         <view class='text'>
             <view>夜醒次数</view>
             <view class="feed_amount">
-                <input name="wake_amount" placeholder-style="color:#fff;" type='number' value="1"></input>
+                <input name="wake_amount" placeholder-style="color:#fff;" type='number' placeholder='非夜晚睡眠不用填写'></input>
             </view>
         </view>
     </view>

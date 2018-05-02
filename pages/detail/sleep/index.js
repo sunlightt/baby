@@ -1,5 +1,5 @@
 
-const app=getApp();
+const app = getApp();
 
 function fill_date(str) {
 
@@ -114,17 +114,13 @@ Page({
 
         var wake_amount = e.detail.value.wake_amount;
 
-        if (wake_amount==''){
-         
-            wx.showToast({
-                title: '请输入夜醒次数',
-                icon:'loading',
-                duration:100
-            });
+        if (wake_amount == '') {
 
-            return;
+            wake_amount = 0;
 
-        } else if (start_time >= timestamp){
+        }
+
+        if (start_time >= timestamp) {
 
             that.setData({
 

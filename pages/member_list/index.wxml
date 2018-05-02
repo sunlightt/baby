@@ -1,0 +1,11 @@
+
+<view class="parent">
+ 
+    <view class="member_list">
+       <view class="item" wx:for="{{member_list_data}}" bindtap="go_pay" data-id="{{item.id}}" data-price="{{item.price}}">
+           <text>{{item.name}}</text>
+           <text>{{item.price}}</text>
+       </view>
+    </view>
+
+</view>

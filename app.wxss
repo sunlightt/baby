@@ -43,6 +43,114 @@
     box-sizing: content-box;
 }
 
-button{
-    border:none;
+button {
+    border: none;
+}
+
+.mark {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 106rpx 36rpx 198rpx;
+}
+
+.mark .close {
+    display: inline-block;
+    width: 44rpx;
+    height: 44rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mark .close image {
+    display: block;
+    width: 18rpx;
+    height: 21rpx;
+    margin: 20rpx auto 0;
+}
+
+.mark .mark_main {
+    position: absolute;
+    top: 106rpx;
+    left: 36rpx;
+    right: 36rpx;
+    bottom: 198rpx;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.mark .mark_main  .day_work {
+    padding: 140rpx 34rpx 0 60rpx;
+}
+
+.mark .mark_main  .day_work .title {
+    font: 44rpx/89rpx '微软雅黑';
+    color: #fa0;
+}
+
+.mark .mark_main  .day_work .content_msg {
+    font: 34rpx/60rpx '微软雅黑';
+    color: #fa0;
+}
+
+.mark .mark_main  .day_work .class_msg text {
+    display: block;
+    font: 34rpx/60rpx '微软雅黑';
+    color: #008aff;
+}
+
+.mark .complete_progress {
+    padding: 20rpx 34rpx 0 60rpx;
+}
+
+.mark .complete_progress .title {
+    font: 46rpx/218rpx '微软雅黑';
+    color: #fa0;
+    text-align: center;
+}
+
+.mark .complete_progress .msg_content {
+    font: 86rpx/202rpx '微软雅黑';
+    color: #fa0;
+    text-align: center;
+}
+
+.mark .complete_progress .success {
+    display: block;
+    width: 100%;
+    font: 42rpx/54rpx '微软雅黑';
+    color: #fa0;
+    text-align: center;
+}
+
+.mark .complete_progress .btn, .mark .day_work .btn {
+    margin-top: 110rpx;
+}
+
+.mark .complete_progress .btn button, .mark .day_work .btn button {
+    width: 35%;
+    font: 30rpx/60rpx '微软雅黑';
+    color: #fff;
+    background: #ff6e00;
+    border-radius: 30rpx;
+}
+.item_title_inf .title_icon{
+    width:200rpx;
+}
+.item_title_inf .title_icon image {
+    display: block;
+    width: 110rpx;
+    height: 110rpx;
+    margin:0 auto;
+}
+
+.item_title_inf .title_text {
+    display: block;
+    width:200rpx;
+    font: 30rpx/48rpx '微软雅黑';
+    color: #404040;
+    text-align:center;
 }

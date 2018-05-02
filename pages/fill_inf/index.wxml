@@ -4,35 +4,69 @@
         <view class="head_img">
             <text>宝宝头像:</text>
             <view class="up_head_img">
-                  <image src="{{head_img}}" bindtap='up_head_img'></image>
+                <view class="head_img_wrap">
+                    <image src="{{head_img}}" bindtap='up_head_img' mode="aspectFill"></image>
+                </view>
             </view>
         </view>
         <view class='info'>
-            <!-- <view class="item">
+            <view class="item">
                 <view class="left">宝宝昵称：</view>
                 <view class="right">
-                    <input name='name'></input>
+                    <input name='name' value="{{baby_name}}"></input>
                 </view>
             </view>
             <view class="item">
                 <view class="left">宝宝性别：</view>
                 <view class="right">
                     <!-- <input name="gender"></input> -->
-             <!--        <picker value="{{sex_index}}" range="{{sex_arr}}" bindchange="normalPickerBindchange">
+                    <picker value="{{sex_index}}" range="{{sex_arr}}" bindchange="pop_mark_normalPickerBindchange">
                         {{sex_arr[sex_index]}}
                     </picker>
+                    <image class="icon" src="/img/down_icon.png"></image>
                 </view>
             </view>
             <view class="item">
                 <view class="left">宝宝生日：</view>
                 <view class='bg right'>
-                    <picker mode="date" bindchange="bindDateChange">
-                        <view class="picker">
-                            {{date}}
-                        </view>
-                    </picker>
+                    <view class="picker">
+                        {{date}}
+                    </view>
                 </view>
-            </view> -->
+            </view>
+            <view class="item relationship">
+                <view class="left">我是宝宝的：</view>
+                <view class='bg right right_item_group'>
+                    <view class="right_item ">
+                        <radio-group class="radio-group" bindchange="radioChange">
+                            <view class="item_radio">
+                                <label class="radio">
+                                    <radio value="1" checked="{{relationship_index==1}}" />爸爸
+                                </label>
+                                <label class="radio">
+                                    <radio value="2" checked="{{relationship_index==2}}" />妈妈
+                                </label>
+                            </view>
+                            <view class="item_radio">
+                                <label class="radio">
+                                    <radio value="3" checked="{{relationship_index==3}}" />爷爷
+                                </label>
+                                <label class="radio">
+                                    <radio value="4" checked="{{relationship_index==4}}" />奶奶
+                                </label>
+                            </view>
+                            <view class="item_radio">
+                                <label class="radio">
+                                    <radio value="5" checked="{{relationship_index==5}}" />外公
+                                </label>
+                                <label class="radio">
+                                    <radio value="6" checked="{{relationship_index==6}}" />外婆
+                                </label>
+                            </view>
+                        </radio-group>
+                    </view>
+                </view>
+            </view>
             <view class="item">
                 <view class="left">生产孕周：</view>
                 <view class='bg right'>
@@ -52,13 +86,15 @@
             <view class="item">
                 <view class="left">出生体重：</view>
                 <view class='bg right'>
-                    <input name='weight' placeholder='单位kg'></input>
+                     <input name='weight' type="digit" placeholder='单位kg' wx:if="{{baby_weight=='kg'}}"></input>
+                     <input name='weight' type="digit" placeholder='单位kg' value="{{baby_weight}}" wx:if="{{baby_weight!='kg'}}"></input>
                 </view>
             </view>
             <view class="item">
                 <view class="left">出生身高：</view>
                 <view class='bg right'>
-                    <input name='high' placeholder='单位cm'></input>
+                    <input name='high' type="number" placeholder='单位cm' wx:if="{{baby_height=='cm'}}"></input>
+                    <input name='high' type="number" placeholder='单位cm' value="{{baby_height}}" wx:if="{{baby_height!='cm'}}"></input>
                 </view>
             </view>
             <view class="item">
@@ -68,6 +104,16 @@
                         {{familyRange[familyValue]}}
                     </picker>
                 </view>
+            </view>
+            <view class="item">
+                <view class="left">微信号：</view>
+                <view class="right">
+                    <input name='wx_number' placeholder='请填写微信号' wx:if="{{!wx_number}}"></input>
+                    <input name='wx_number' placeholder='请填写微信号' value="{{wx_number}}" wx:if="{{wx_number}}"></input>
+                </view>
+            </view>
+            <view class="item">
+               <view class="tip">方便我们的私人顾问联系到您，帮您更好地体验我们的服务</view>
             </view>
         </view>
         <button form-type='submit' class="submit">提交</button>

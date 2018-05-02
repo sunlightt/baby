@@ -1,0 +1,2 @@
+<canvas canvas-id="myCanvas" bindlongtap="longtap" style="display:block;width:320px;box-sizing:border-box;height:568px;margin:0 auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"/>
+<button bindtap='save_img' class="save">保存到手机</button>

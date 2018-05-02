@@ -21,7 +21,7 @@ Page({
     data: {
         // text:"这是一个页面"
         pickerValue: 0,
-        pickerRange: ['俯卧抬头', '肘撑俯卧', '拉坐练习', '翻身练习', '靠坐练习'],
+        pickerRange: ['俯卧抬头', '肘撑俯卧', '拉坐练习', '翻身练习', '靠坐练习','其他'],
         timeValue: '12:20',
         dateValue: '2018-4-17',
 

@@ -1,5 +1,10 @@
 <view class='feed'>
-    <image src='/img/wy.png' mode='aspectFit'></image>
+    <view class="item_title_inf">
+         <view class="title_icon" >
+              <image src="/img/icon5.png"></image>
+         </view>
+         <text class="title_text">喂养</text>
+    </view>
 </view>
 <form bindsubmit='submit'>
     <view class='main'>
@@ -38,7 +43,7 @@
         <view class='text' wx:if="{{milk_onoff}}">
             <view>配方奶</view>
             <view class="feed_amount">
-                <input name="feed_amount" placeholder="单位毫升" placeholder-style="color:#fff;"></input>
+                <input name="feed_amount" type="number" placeholder="单位毫升" placeholder-style="color:#fff;"></input>
             </view>
         </view>
     </view>

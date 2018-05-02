@@ -1,0 +1,31 @@
+.parent {
+    padding: 30rpx 30rpx 0;
+}
+
+.list .item_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list .item_wrap .item {
+    width: 49%;
+}
+
+.list .item_wrap .item .img {
+    width: 100%;
+}
+
+.list .item_wrap .item .img image {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+.list .item_wrap .item .text{
+    padding:20rpx 0;
+}
+.list .item_wrap .item .text text {
+    display: block;
+    font: 30rpx/40rpx '微软雅黑';
+    text-align: center;
+}

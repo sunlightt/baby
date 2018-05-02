@@ -10,30 +10,6 @@
                 <text class="date">{{item.date}}</text>
                 <text class="week">周{{item.week}}</text>
             </view>
-            <!-- <view class="item">
-                <text class="date">18</text>
-                <text class="week">周一</text>
-            </view>
-            <view class="item">
-                <text class="date">18</text>
-                <text class="week">周一</text>
-            </view>
-            <view class="item">
-                <text class="date">18</text>
-                <text class="week">周一</text>
-            </view>
-            <view class="item">
-                <text class="date">18</text>
-                <text class="week">周一</text>
-            </view>
-            <view class="item">
-                <text class="date">18</text>
-                <text class="week">周一</text>
-            </view>
-            <view class="item">
-                <text class="date">18</text>
-                <text class="week">周一</text>
-            </view> -->
         </view>
     </view>
     <view class="main">
@@ -48,7 +24,7 @@
                 <text>大便{{record_data.total_bian}}次，{{record_data.is_zhengchang==1 ? '性状正常' : '非正常'}}</text>
                 <text>体温记录{{record_data.total_ti}}，为{{record_data.sq5[0].temper}}℃</text>
                 <text>活动记录{{record_data.total_act}}次，共计{{record_data.total4}}分钟</text>
-                <text>身高体重最近称量{{record_data.sq7[0].weight}}cm,{{record_data.sq7[0].height}}kg</text>  
+                <text>身高体重最近称量{{record_data.sq7[0].weight}}cm,{{record_data.sq7[0].height}}kg</text>
             </view>
         </view>
         <view class="section">
@@ -70,15 +46,35 @@
                         <text class="time" wx:if="{{item.type==3}}">大便 {{item.character==1 ? '性状正常' : '非正常'}}</text>
                         <text class="time" wx:if="{{item.type==4}}">体温 {{item.temper}}℃</text>
                         <text class="time" wx:if="{{item.type==5}}">活动 {{item.longtime}}分钟</text>
-                        <text class="time" wx:if="{{item.type==6}}">身高/体重 {{item.height}}cm , {{item.weight}}kg</text> 
+                        <text class="time" wx:if="{{item.type==6}}">身高/体重 {{item.height}}cm , {{item.weight}}kg</text>
                     </view>
                 </view>
             </view>
         </view>
         <view class="sub_btn" style="padding-bottom:30rpx">
-             <button bindtap='submit_report'>提交记录 获取方案</button>
+            <button bindtap='show_mark'>提交记录 获取方案</button>
         </view>
     </view>
+</view>
 
+<view class="mark" wx:if="{{mark_off}}">
+    <view class="mark_main">
+        <view class="close" bindtap='cancel_btn'>
+            <image src="/img/close.png" mode='widthFix'></image>
+        </view>
+        <view class="complete_progress">
+            <view class="title">温馨提示:</view>
+            <text class="success" wx:if="{{mark_off && !month_rport_submit_num_status}}">请确认该日的喂养、睡眠、大便、身高体重等内容记录完全，数据的完整和准确是我们养育方案适用性和针对性的基础哦~</text>
+            <text class="success" wx:if="{{mark_off && month_rport_submit_num_status}}">亲爱的家长，您已经有这个月的个性化养育方案了哦~</text>
+            <text class="success" wx:if="{{mark_off && month_rport_submit_num_status}}">请下个月再来提交，领取新的方案吧~</text>
+            <view class="btn" wx:if="{{!month_rport_submit_num_status}}">
+                <button bindtap='cancel_btn'>返回补充</button>
+                <button bindtap='confirm_btn'>确认提交</button>
+            </view>
+            <view class="btn" wx:if="{{month_rport_submit_num_status}}">
+                <button bindtap='cancel_btn'>确认退出</button>
+            </view>
+        </view>
 
+    </view>
 </view>

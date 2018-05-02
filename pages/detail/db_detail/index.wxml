@@ -1,0 +1,77 @@
+<view class="parent">
+
+    <view class="list">
+        <view class="item_wrap">
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%281%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>带血便便</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%282%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>蛋花汤样便便</text>
+                </view>
+            </view>
+        </view>
+        <view class="item_wrap">
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%283%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>豆腐渣样便便</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%284%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>灰白色便便</text>
+                </view>
+            </view>
+        </view>
+        <view class="item_wrap">
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%285%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>绿便</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%286%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>奶瓣便便</text>
+                </view>
+            </view>
+        </view>
+        <view class="item_wrap">
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%287%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>泡沫便便</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="img">
+                    <image src="http://p6v1wjzjz.bkt.clouddn.com/db1%20%288%29.png" mode='widthFix'></image>
+                </view>
+                <view class="text">
+                    <text>油状便便</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

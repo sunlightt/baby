@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "养育方案"
+    "navigationBarTitleText": "养育方案",
+    "enablePullDownRefresh": false
 }

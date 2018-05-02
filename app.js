@@ -1,8 +1,14 @@
+var QQMapWX = require('/utils/qqmap-wx-jssdk.min.js');
+
 //app.js
 App({
     onLaunch: function () {
 
         var that = this;
+
+        that.globalData.qqmapsdk = new QQMapWX({
+            key: 'WV4BZ-ZZNC4-TFDUS-XW5XV-D5WHZ-Z3FWX'
+        }); 
 
         wx.login({
             success: function (res) {
@@ -128,7 +134,7 @@ App({
 
     },
     globalData: {
-        userInfo: null,
+        userinf: null,
         url: 'https://safe.babyard.net/'
     }
 })

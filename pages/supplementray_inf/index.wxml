@@ -1,12 +1,12 @@
 <view class="parent">
-    <text class="title">宝宝信息补充</text>
+    <text class="title">提交数据补充</text>
     <view class="mian">
         <form bindsubmit='submit_report'>
             <view class="group">
                 <text class="group_title">爸爸养娃参与度:</text>
                 <view class="group_fill">
                     <view class="group_fill_items">
-                        <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{participation_degree}}">
+                        <picker mode="multiSelector" bindchange="participation_degree" range="{{participation_degree}}">
                             {{participation_degree[0][participation_degree_index]}}
                         </picker>
                     </view>
@@ -18,7 +18,7 @@
                 <view class="group_fill">
                     <view class="group_fill_items">
                         <view class="group_fill_items">
-                            <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{spit_milk}}">
+                            <picker mode="multiSelector" bindchange="spit_milk" range="{{spit_milk}}">
                                 {{spit_milk[0][spit_milk_index]}}
                             </picker>
                         </view>
@@ -30,7 +30,7 @@
                 <text class="group_title">有无食物过敏:</text>
                 <view class="group_fill">
                     <view class="group_fill_items">
-                        <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{allergy_status}}">
+                        <picker mode="multiSelector" bindchange="allergy_status" range="{{allergy_status}}">
                             {{allergy_status[0][allergy_status_index]}}
                         </picker>
                     </view>
@@ -41,7 +41,7 @@
                 <text class="group_title">食物过敏源:</text>
                 <view class="group_fill">
                     <view class="group_fill_items">
-                         <input name="allergen" placeholder='输入过敏源'></input>
+                         <input name="allergen" placeholder='输入过敏源' value="无"></input>
                     </view>
                     <!-- <image src="/img/down_icon.png"></image> -->
                 </view>
@@ -50,7 +50,7 @@
                 <text class="group_title">哄睡方式:</text>
                 <view class="group_fill">
                     <view class="group_fill_items">
-                        <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{sleep_type}}">
+                        <picker mode="multiSelector" bindchange="sleep_type" range="{{sleep_type}}">
                             {{sleep_type[0][sleep_type_index]}}
                         </picker>
                     </view>
@@ -61,7 +61,7 @@
                 <text class="group_title">是否单独睡婴儿床:</text>
                 <view class="group_fill">
                     <view class="group_fill_items">
-                        <picker mode="multiSelector" bindchange="bindMultiPickerChange" range="{{is_independent_sleep}}">
+                        <picker mode="multiSelector" bindchange="is_independent_sleep" range="{{is_independent_sleep}}">
                             {{is_independent_sleep[0][is_independent_sleep_index]}}
                         </picker>
                     </view>
