@@ -28,7 +28,6 @@ var lineChart = null;
 // var simulationData=null;
 
 
-
 Page({
 
     data: {
@@ -60,6 +59,8 @@ Page({
             // WxParse.wxParse('article', 'html', code1,that, 5);
 
             that.get_growth_devlopment_report_inf();
+
+            that.get_height_draw_data();
 
 
         } else if (options.index == 2) {
@@ -107,14 +108,6 @@ Page({
             // WxParse.wxParse('article', 'html', code8,that, 5);
 
         }
-
-
-
-        that.get_height_draw_data();
-
-
-
-
 
 
     },
@@ -206,7 +199,6 @@ Page({
 
                 }
 
-
             },
             fail: function (res) {
 
@@ -225,7 +217,6 @@ Page({
         var that = this;
 
         var report_inf = that.data.report_inf;
-
 
         wx.request({
             url: app.globalData.url + 'index.php/api/User/sleeps',
@@ -591,12 +582,16 @@ Page({
             }
         })
 
-
     },
 
     wxParseTagATap: function (e) {
 
-        console.log('ceshi');
+        var src = e.currentTarget.dataset.src;
+
+        wx.navigateTo({
+            url: '/pages/webview/index?url=' + src + '&type=1'
+        });
+        
     },
 
     // 获取身高曲线图数据
@@ -612,7 +607,6 @@ Page({
             },
             success: function (res) {
 
-                console.log(res.data);
 
                 if (res.data.status == 200) {
 
@@ -620,9 +614,9 @@ Page({
 
                     var hight_refer_draw_data = res.data.data.xian[2];
 
-                    var baby_weight_draw_data = res.data.data.actual[17].weight;
+                    var baby_weight_draw_data = [];
 
-                    var baby_height_draw_data = res.data.data.actual[17].height;
+                    var baby_height_draw_data = [];
 
                     var weight_refer_draw_data_arr = [[], [], [], [], [], [], []];
 
@@ -632,9 +626,17 @@ Page({
 
                     var for_in_index1 = 0;
 
-                    for (var attr in weight_refer_draw_data) {
 
-                        console.log(attr);
+                    for (var i = 0; i < res.data.data.actual.length; i++) {
+
+                        baby_weight_draw_data.push(res.data.data.actual[i].weight);
+
+                        baby_height_draw_data.push(res.data.data.actual[i].height);
+
+                    }
+
+
+                    for (var attr in weight_refer_draw_data) {
 
                         for (var i = 0; i < weight_refer_draw_data[attr].length; i++) {
 
@@ -648,7 +650,7 @@ Page({
 
                     for (var attr in hight_refer_draw_data) {
 
-                        for (var i = 0; i < hight_refer_draw_data[attr].length ; i++) {
+                        for (var i = 0; i < hight_refer_draw_data[attr].length; i++) {
 
                             hight_refer_draw_data_arr[for_in_index1].push(Number(hight_refer_draw_data[attr][i].zhi));
 
@@ -657,16 +659,6 @@ Page({
                         for_in_index1++;
 
                     }
-
-
-
-                    console.log(hight_refer_draw_data_arr);
-
-                    console.log(hight_refer_draw_data_arr[1]);
-
-
-                    console.log(weight_refer_draw_data);
-
 
                     // canvas
                     var windowWidth = 320;
@@ -685,10 +677,10 @@ Page({
                         type: 'line',
                         categories: simulationData.categories,
                         animation: true,
-                        // background: '#f5f5f5',
+                        background: '#fff2cc',
                         series: [{
                             name: '宝宝',
-                            data: [baby_height_draw_data],
+                            data: baby_height_draw_data,
                             format: function (val, name) {
                                 return val.toFixed(2) + '万';
                             }
@@ -756,10 +748,10 @@ Page({
                         type: 'line',
                         categories: simulationData.categories,
                         animation: true,
-                        // background: '#f5f5f5',
+                        background: '#fff2cc',
                         series: [{
                             name: '宝宝',
-                            data: [baby_weight_draw_data],
+                            data: baby_weight_draw_data,
                             format: function (val, name) {
                                 return val.toFixed(2) + '万';
                             }
@@ -820,16 +812,6 @@ Page({
                         }
                     });
 
-
-
-
-
-
-
-
-
-
-
                 }
 
             },
@@ -859,7 +841,7 @@ Page({
         var categories = [];
         var data = [];
         var data1 = [];
-        for (var i = 0; i < 7; i++) {
+        for (var i = 0; i < 13; i++) {
 
             // categories.push('2016-' + (i + 1));
 

@@ -92,13 +92,11 @@ Page({
 
                     var img_height = res.height;
 
-                    var scale_rate = img_width / 50;
+                    var scale_rate = img_width / 100;
 
                     var scale_height = img_height / scale_rate;
 
-                    console.log(scale_height);
-
-                    var pos_x = 60-50;
+                    var pos_x = 60 - 50;
 
                     var pos_y = 315 - (scale_height/2);
 

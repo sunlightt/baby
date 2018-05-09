@@ -51,7 +51,7 @@
                         </view>
                     </view>
                 </view>
-                <button bindtap='tab_webview'>https请求</button>
+                <!-- <button bindtap='tab_webview1'>https请求</button> -->
                 <view class='day'>
                     <view class='day-title'>
                         <view class='day-task'>
@@ -132,7 +132,10 @@
 
                         <!--提交了还没到三小时  -->
                         <view class="tip" wx:if="{{submit_report_status && !aim_time_show_report_status}}">
-                            <text>您的数据已提交，个性化养育方案将在六个小时内反馈给您，请耐心等待~</text>
+                            <text>感谢您的数据提交！\n您的一对一个性化养育方案，正由宝贝吖babyard专家审定，六小时内会反馈给您。本月方案会在小程序该页面展现，请耐心等待~</text>
+                            <view class="baby_logo">
+                                <image src="http://p6v1wjzjz.bkt.clouddn.com/baby_logo1.png" mode='widthFix'></image>
+                            </view>
                         </view>
 
                         <view class="submit_report" wx:if="{{!submit_report_status && !aim_time_show_report_status}}">
@@ -192,11 +195,11 @@
         <!--日常任务  -->
         <view class="day_work" wx:if="{{day_work_onoff}}">
             <view class="title">{{task_inf.type==1 ? '日常任务' : '学习任务'}}:</view>
-             <view class="content_msg">{{task_inf.title}}</view> 
+            <view class="content_msg">{{task_inf.title}}</view>
             <view class="content_msg">{{task_inf.content}}</view>
             <!-- <view class="content_msg"></view> -->
             <!-- <view class="content_msg">大运动-给宝宝做3分钟竖头l联系</view> -->
-            <view class="class_msg" wx:if="{{task_inf.url!=''}}" >
+            <view class="class_msg" wx:if="{{task_inf.url!=''}}">
                 <text data-url="{{task_inf.url}}" data-src="{{task_inf.url}}" bindtap='tab_webview'>{{task_inf.course}}</text>
             </view>
             <view class="btn">
@@ -249,7 +252,7 @@
                                 </view>
                                 <view class="section_item_option_msg">
                                     <image src="/img/pop_mark_icon1.png" mode='widthFix'></image>
-                                    <text>记录每一点数据，关注宝贝每一点改变</text>
+                                    <text>记录成长数据，关注宝贝每一点改变</text>
                                 </view>
                                 <view class="section_item_option_msg">
                                     <image src="/img/pop_mark_icon3.png" mode='widthFix'></image>
@@ -257,7 +260,7 @@
                                 </view>
                                 <view class="section_item_option_msg">
                                     <image src="/img/pop_mark_icon4.png" mode='widthFix'></image>
-                                    <text>天气穿衣提醒，提心关爱每一个细节</text>
+                                    <text>天气穿衣提醒，贴心关爱每一个细节</text>
                                 </view>
                             </view>
                             <view class="section_item_option section_item_option_two">
@@ -330,12 +333,12 @@
                             </view>
                             <view class="section_item_option">
                                 <view class="section_item_option_msg">
-                                    <view>1. 连续使用喂养记录和每日任务并打开分型满
+                                    <view>1. 连续使用喂养记录和每日任务并打卡分享满
                                         <text>3天 ，免费</text>获得当月个性化养育方案及试听课程；</view>
                                 </view>
                                 <view class="section_item_option_msg">
-                                    <view>2 . 连续使用喂养记录和每日任务并打开分享满
-                                        <text> 7天</text>，免费你获赠价值
+                                    <view>2 . 连续使用喂养记录和每日任务并打卡分享满
+                                        <text> 7天</text>，免费获赠价值
                                         <text> 199元</text>一对一私教课程;</view>
                                 </view>
                                 <view class="section_item_option_msg">

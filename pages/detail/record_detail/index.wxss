@@ -141,7 +141,9 @@
 
 
 .mark .complete_progress .success {
-    padding-top:100rpx;
+    /* padding-top:100rpx; */
+    font:32rpx/42rpx '微软雅黑';
+    text-align:left;
 }
 
 .mark .complete_progress .btn, .mark .day_work .btn{

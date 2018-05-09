@@ -107,12 +107,23 @@ Page({
         var nowTime = now.getTime();
         var day = now.getDay();
 
+        console.log(day);
+
+        console.log(day == 0);
+
+        if (day==0){
+
+            day=7;
+        }
+
         var oneDayLong = 24 * 60 * 60 * 1000;
         //获取本周所在周一
         var MondayTime = nowTime - (day - 1) * oneDayLong;
         //
         //获取本周所在周末                    
         var SundayTime = nowTime + (7 - day) * oneDayLong;
+
+       
         //转化日期
         var monday = new Date(MondayTime);
         var sunday = new Date(SundayTime);
@@ -132,6 +143,11 @@ Page({
             var data_ob = new Date(new_test_date_str);
 
             var current_day = data_ob.getDay();
+
+            if (current_day==0){
+
+                current_day=7;
+            }
 
             if (current_day == day) {
 

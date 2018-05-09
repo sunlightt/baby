@@ -127,7 +127,7 @@ Page({
 
                     var img_height = res.height;
 
-                    var scale_rate = img_width / 50;
+                    var scale_rate = img_width / 100;
 
                     var scale_height = img_height / scale_rate;
 

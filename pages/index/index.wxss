@@ -459,13 +459,22 @@ swiper {
 
 .main_container .tip {
     margin-top: 100rpx;
-    border-bottom: 1rpx solid #d6d6d6;
+    /* border-bottom: 1rpx solid #d6d6d6; */
 }
 
 .main_container .tip text {
     display: block;
     font: 30rpx/54rpx '微软雅黑';
     color: #aaa;
+}
+
+.main_container .tip .baby_logo{
+    padding:40rpx 20rpx 0;
+}
+
+.main_container .tip .baby_logo image{
+    display:block;
+    width:100%;
 }
 
 .main_container .submit_report {

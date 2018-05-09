@@ -24,7 +24,7 @@
                 <text>大便{{record_data.total_bian}}次，{{record_data.is_zhengchang==1 ? '性状正常' : '非正常'}}</text>
                 <text>体温记录{{record_data.total_ti}}，为{{record_data.sq5[0].temper}}℃</text>
                 <text>活动记录{{record_data.total_act}}次，共计{{record_data.total4}}分钟</text>
-                <text>身高体重最近称量{{record_data.sq7[0].weight}}cm,{{record_data.sq7[0].height}}kg</text>
+                <text>身高体重最近称量{{record_data.sq7[0].height}}kg,{{record_data.sq7[0].weight}}cm</text>
             </view>
         </view>
         <view class="section">
@@ -65,8 +65,8 @@
         <view class="complete_progress">
             <view class="title">温馨提示:</view>
             <text class="success" wx:if="{{mark_off && !month_rport_submit_num_status}}">请确认该日的喂养、睡眠、大便、身高体重等内容记录完全，数据的完整和准确是我们养育方案适用性和针对性的基础哦~</text>
-            <text class="success" wx:if="{{mark_off && month_rport_submit_num_status}}">亲爱的家长，您已经有这个月的个性化养育方案了哦~</text>
-            <text class="success" wx:if="{{mark_off && month_rport_submit_num_status}}">请下个月再来提交，领取新的方案吧~</text>
+            <text class="success" wx:if="{{mark_off && month_rport_submit_num_status}}">亲爱的家长,您已经获得这个月的个性化养育方案了哦~\n优享会员，尊享会员可每月定时获取养育方案，请记得下个月再来提交记录，获取下一月龄的养育方案~\n畅享会员（免费用户）仅可体验当月个性化养育方案。\n升级会员，解锁更多专属服务请联系您的私人顾问~</text>
+            <!-- <text class="success" wx:if="{{mark_off && month_rport_submit_num_status}}">请下个月再来提交，领取新的方案吧~</text> -->
             <view class="btn" wx:if="{{!month_rport_submit_num_status}}">
                 <button bindtap='cancel_btn'>返回补充</button>
                 <button bindtap='confirm_btn'>确认提交</button>

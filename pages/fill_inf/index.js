@@ -126,7 +126,7 @@ Page({
 
         var that = this;
 
-        var baby_weight = parseInt(that.data.baby_weight);
+        var baby_weight = parseFloat(that.data.baby_weight);
 
         var baby_height = parseInt(that.data.baby_height);
 
@@ -283,7 +283,7 @@ Page({
 
         var that = this;
 
-        var chu_weight = e.detail.value.weight == '' ? ' ' : parseInt(e.detail.value.weight);
+        var chu_weight = e.detail.value.weight == '' ? ' ' : parseFloat(e.detail.value.weight);
         var chu_height = e.detail.value.high == '' ? ' ' : parseInt(e.detail.value.high);
 
         var name = e.detail.value.name;

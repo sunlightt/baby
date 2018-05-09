@@ -36,7 +36,7 @@ Page({
         // 养育报告提交状态
         submit_report_status: false,
 
-        report_time: '2018-04-26',
+        report_time: '2018-04-27',
 
         mark_code_show_code: false,
         code_src: '/img/code.jpg',
@@ -64,10 +64,10 @@ Page({
         pop_mark_swiper_current_view_index: 0,
 
     },
-    tab_webview: function (e) {
+    tab_webview1: function (e) {
 
         wx.navigateTo({
-            url: '/pages/webview/index'
+            url: '/pages/webview/index?url=https://www.babyard.net'+'&type=1'
         });
 
     },
@@ -202,10 +202,8 @@ Page({
                                 } else {
 
                                     that.setData({
-
                                         loading_status: false,
                                         content_show_status: false,
-
                                     });
                                 }
 
@@ -768,13 +766,13 @@ Page({
 
         var that = this;
 
-        var code_src = 'http://p6v1wjzjz.bkt.clouddn.com/code.jpg';
+        var code_src = 'http://p6v1wjzjz.bkt.clouddn.com/xiaowang_teacher.jpg';
 
         var sex = e.currentTarget.dataset.sex;
 
         if (sex != 1) {
 
-            code_src = 'http://p6v1wjzjz.bkt.clouddn.com/code1.jpg'
+            code_src = 'http://p6v1wjzjz.bkt.clouddn.com/xiaoyi_teacher.jpg'
         }
 
         that.setData({

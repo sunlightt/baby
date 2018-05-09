@@ -9,13 +9,35 @@ Page({
 
         var that = this;
 
-        // console.log(options.http_src);
+        console.log(options);
 
-        that.setData({
+        // https://www.babyard.net
 
-            http_src: options.http_src
+      
 
-        });
+        if (options.type==1){
+               
+            that.setData({
+
+                http_src: options.url
+
+            });
+
+
+        }else{
+
+            that.setData({
+
+                http_src: options.http_src
+
+            });
+
+        }
+
+
+        console.log(that.data.http_src);
+
+        
 
     }
 

@@ -10,6 +10,7 @@
 'use strict';
 
 var config = {
+    
     yAxisWidth: 15,
     yAxisSplit: 6,
     xAxisHeight: 15,
@@ -17,10 +18,11 @@ var config = {
     legendHeight: 15,
     yAxisTitleWidth: 15,
     padding: 12,
-    columePadding: 3,
+    columePadding: 0,
     fontSize: 10,
     dataPointShape: ['diamond', 'circle', 'triangle', 'rect'],
-    colors: ['#7cb5ec', '#f7a35c', '#434348', '#90ed7d', '#f15c80', '#8085e9'],
+    // colors: ['#7cb5ec', '#f7a35c', '#434348', '#90ed7d', '#f15c80', '#8085e9'],
+    colors: ['#302e8e', '#383591', '#ff3df2', '#406333', '#a4443a', '#822282'],
     pieChartLinePadding: 25,
     pieChartTextPadding: 15,
     xAxisTextPadding: 3,
@@ -696,10 +698,6 @@ function getYAxisTextList(series, opts, config) {
     // var maxRange = dataRange.maxRange;
     var maxRange = opts.yAxis.max;
 
-    console.log(minRange);
-
-    console.log(maxRange);
-
     var range = [];
 
     // var range = [100,80,60,40,20,10,0];
@@ -711,8 +709,6 @@ function getYAxisTextList(series, opts, config) {
     }
 
     
-
-    console.log(range); 
     // return range;
     return range.reverse();
 }
@@ -1243,7 +1239,7 @@ function drawLineDataPoints(series, opts, config, context) {
         splitPointList.forEach(function (points, index) {
             context.beginPath();
             context.setStrokeStyle(eachSeries.color);
-            context.setLineWidth(2);
+            context.setLineWidth(0.5);
             if (points.length === 1) {
                 context.moveTo(points[0].x, points[0].y);
                 context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
@@ -1826,14 +1822,6 @@ function drawCharts(type, opts, config, context) {
                     drawLegend(opts.series, opts, config, context);
                     drawYAxis(series, opts, config, context);
                   
-                    // console.log(series);
-
-                    // console.log(opts);
-
-                    // console.log(config);
-                    
-                    // console.log(context);
-
                     drawToolTipBridge(opts, config, context, process);
                     drawCanvas(opts, context);
                 },

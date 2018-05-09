@@ -25,139 +25,145 @@
                     </view>
                     <image src="/img/down_icon.png"></image>
                 </view>
-            </view>
-            <view class="group">
-                <text class="group_title">有无食物过敏:</text>
-                <view class="group_fill">
-                    <view class="group_fill_items">
-                        <picker mode="multiSelector" bindchange="allergy_status" range="{{allergy_status}}">
-                            {{allergy_status[0][allergy_status_index]}}
-                        </picker>
-                    </view>
-                    <image src="/img/down_icon.png"></image>
-                </view>
-            </view>
-            <view class="group">
-                <text class="group_title">食物过敏源:</text>
-                <view class="group_fill">
-                    <view class="group_fill_items">
-                         <input name="allergen" placeholder='输入过敏源' value="无"></input>
-                    </view>
-                    <!-- <image src="/img/down_icon.png"></image> -->
-                </view>
-            </view>
-            <view class="group">
-                <text class="group_title">哄睡方式:</text>
-                <view class="group_fill">
-                    <view class="group_fill_items">
-                        <picker mode="multiSelector" bindchange="sleep_type" range="{{sleep_type}}">
-                            {{sleep_type[0][sleep_type_index]}}
-                        </picker>
-                    </view>
-                    <image src="/img/down_icon.png"></image>
-                </view>
-            </view>
-            <view class="group">
-                <text class="group_title">是否单独睡婴儿床:</text>
-                <view class="group_fill">
-                    <view class="group_fill_items">
-                        <picker mode="multiSelector" bindchange="is_independent_sleep" range="{{is_independent_sleep}}">
-                            {{is_independent_sleep[0][is_independent_sleep_index]}}
-                        </picker>
-                    </view>
-                    <image src="/img/down_icon.png"></image>
-                </view>
-            </view>
-            <view class="group">
-                <text class="group_title">大运动能力（勾选已具备的能力）:</text>
-                <view class="group_fill">
-                    <view class="group_fill_items">
-                        <view class="radio_item">
-                            <checkbox-group bindchange="checkboxChange_motion">
-                                <label class="checkbox">
-                                    <checkbox value="1" />抬头
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="2" />俯卧
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="3" />翻身
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="4" />靠坐
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="5" />独坐
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="6" />爬行
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="7" />扶站
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="8" />走路
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="9" />跑跳
-                                </label>
-                            </checkbox-group>
+                <!-- </view>
+              
+              
+              
+                 -->
+                <view class="group">
+                    <text class="group_title">有无食物过敏:</text>
+                    <view class="group_fill">
+                        <view class="group_fill_items">
+                            <picker mode="multiSelector" bindchange="allergy_status" range="{{allergy_status}}">
+                                {{allergy_status[0][allergy_status_index]}}
+                            </picker>
                         </view>
+                        <image src="/img/down_icon.png"></image>
                     </view>
-                    <!-- <image src="/img/down_icon.png"></image> -->
                 </view>
-            </view>
-            <view class="group">
-                <text class="group_title">精细运动能力（勾选已具备的能力）:</text>
-                <view class="group_fill checkboxChange_movement">
-                    <view class="group_fill_items">
-                        <view class="radio_item">
-                            <checkbox-group bindchange="checkboxChange_movement">
-                                <label class="checkbox">
-                                    <checkbox value="1" />追视（注视物体并随其移动转头180°）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="2" />追听（判断声音来源并循着声源转头）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="3" />抓握（自主抓住面前的物体且会松手）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="4" />看手（拱起小手/抓起小脚在眼前研究）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="5" />够取（努力伸手去够一定距离的物体）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="6" />倒手（将玩具从单手换到另一只手）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="7" />投入（将物体放入容器中）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="8" />对碰（左右手各拿一个玩具对碰/敲桌）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="9" />捏取（大拇指和食指捏起细小物体）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="10" />取出（从容器中再将物体取出）
-                                </label>
-                                <label class="checkbox">
-                                    <checkbox value="11" />涂画（握住蜡笔/粉笔在平面上涂画））
-                                </label>
-                            </checkbox-group>
+                <view class="group">
+                    <text class="group_title">食物过敏源:</text>
+                    <view class="group_fill">
+                        <view class="group_fill_items">
+                            <input name="allergen" placeholder='输入过敏源' value="无"></input>
                         </view>
+                        <!-- <image src="/img/down_icon.png"></image> -->
                     </view>
-                    <!-- <image src="/img/down_icon.png"></image> -->
                 </view>
-            </view>
-            <view class="submit_report">
-                <button form-type="submit">提交数据 获取报告</button>
-            </view>
+                <view class="group">
+                    <text class="group_title">哄睡方式:</text>
+                    <view class="group_fill">
+                        <view class="group_fill_items">
+                            <picker mode="multiSelector" bindchange="sleep_type" range="{{sleep_type}}">
+                                {{sleep_type[0][sleep_type_index]}}
+                            </picker>
+                        </view>
+                        <image src="/img/down_icon.png"></image>
+                    </view>
+                </view>
+                <view class="group">
+                    <text class="group_title">是否单独睡婴儿床:</text>
+                    <view class="group_fill">
+                        <view class="group_fill_items">
+                            <picker mode="multiSelector" bindchange="is_independent_sleep" range="{{is_independent_sleep}}">
+                                {{is_independent_sleep[0][is_independent_sleep_index]}}
+                            </picker>
+                        </view>
+                        <image src="/img/down_icon.png"></image>
+                    </view>
+                </view>
+                <view class="group">
+                    <text class="group_title">大运动能力（勾选已具备的能力）:</text>
+                    <view class="group_fill">
+                        <view class="group_fill_items">
+                            <view class="radio_item">
+                                <checkbox-group bindchange="checkboxChange_motion">
+                                    <label class="checkbox">
+                                        <checkbox value="1" />抬头
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="2" />俯卧
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="3" />翻身
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="4" />靠坐
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="5" />独坐
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="6" />爬行
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="7" />扶站
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="8" />走路
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="9" />跑跳
+                                    </label>
+                                </checkbox-group>
+                            </view>
+                        </view>
+                        <!-- <image src="/img/down_icon.png"></image> -->
+                    </view>
+                </view>
+                <view class="group">
+                    <text class="group_title">精细运动能力（勾选已具备的能力）:</text>
+                    <view class="group_fill checkboxChange_movement">
+                        <view class="group_fill_items">
+                            <view class="radio_item">
+                                <checkbox-group bindchange="checkboxChange_movement">
+                                    <label class="checkbox">
+                                        <checkbox value="1" />追视（注视物体并随其移动转头180°）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="2" />追听（判断声音来源并循着声源转头）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="3" />抓握（自主抓住面前的物体且会松手）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="4" />看手（拱起小手/抓起小脚在眼前研究）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="5" />够取（努力伸手去够一定距离的物体）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="6" />倒手（将玩具从单手换到另一只手）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="7" />投入（将物体放入容器中）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="8" />对碰（左右手各拿一个玩具对碰/敲桌）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="9" />捏取（大拇指和食指捏起细小物体）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="10" />取出（从容器中再将物体取出）
+                                    </label>
+                                    <label class="checkbox">
+                                        <checkbox value="11" />涂画（握住蜡笔/粉笔在平面上涂画））
+                                    </label>
+                                </checkbox-group>
+                            </view>
+                        </view>
+                        <!-- <image src="/img/down_icon.png"></image> -->
+                    </view>
+                </view>
+                <view class="submit_report">
+                    <button form-type="submit">提交数据 获取报告</button>
+                </view>
 
-            <!--select radio  -->
-            <!--大运动能力  -->
+                <!--select radio  -->
+                <!--大运动能力  -->
+
+            </view>
         </form>
     </view>
 </view>

@@ -62,31 +62,33 @@
         </view>
 
         <view wx:if="{{current_index==1}}" class="height_weight canvas_container">
-            <!--身高  -->
-            <view class="tip_msg wrap_padding">
-                <text class="sub_title">{{baby_nickname}}的生长曲线：体重（数据来源于WHO世界卫生组织）</text>
-            </view>
-            <view class="container">
-                <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
-                <!-- <button type="primary" bindtap="updateData">更新数据</button> -->
-            </view>
-            
-            <view class="wrap_padding">
-                <view wx:if="{{report_inf.height}}">{{report_inf.weight}}</view>
-            </view>
-
+        
             <!--体重  -->
             <view class="tip_msg wrap_padding">
                 <text class="sub_title">{{baby_nickname}}的生长曲线：体重（数据来源于WHO世界卫生组织）</text>
             </view>
             <view class="container">
-                <canvas canvas-id="lineCanvas1" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
+                <canvas canvas-id="lineCanvas1"  class="canvas"></canvas>
                 <!-- <button type="primary" bindtap="updateData">更新数据</button> -->
             </view>
-            
+
+            <view class="wrap_padding">
+                <view wx:if="{{report_inf.height}}">{{report_inf.weight}}</view>
+            </view>
+
+            <!--身高  -->
+            <view class="tip_msg wrap_padding">
+                <text class="sub_title">{{baby_nickname}}的生长曲线：身高（数据来源于WHO世界卫生组织）</text>
+            </view>
+            <view class="container">
+                <canvas canvas-id="lineCanvas"  class="canvas"></canvas>
+                <!-- <button type="primary" bindtap="updateData">更新数据</button> -->
+            </view>
+
             <view class="wrap_padding">
                  <view wx:if="{{report_inf.height}}">{{report_inf.height}}</view>
             </view>
+
         </view>
 
         <view class="wrap_padding">
